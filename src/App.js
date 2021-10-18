@@ -7,9 +7,26 @@ import {
 import HomePage from './HomePage.js';
 
 
+
 import './App.css'
 
+const TOKEN_KEY = 'TOKEN'
+
 export default class App extends Component {
+
+state = {
+    token: localStorage.getItem(TOKEN_KEY) || ''
+  }
+
+tokenToLocalStorage = token => {
+    localStorage.setItem(TOKEN_KEY, token)
+    this.setState({ token: token })
+  }
+
+
+
+
+
     render() {
         return (
             <div>
