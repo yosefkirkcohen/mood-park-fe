@@ -5,15 +5,19 @@ import {
     Switch,
 } from 'react-router-dom';
 import HomePage from './HomePage.js';
-
-
 import './App.css'
+import Navigation from './Navigation.js';
+import Favorites from './Favorites.js';
+// import LogIn from './LogIn.js';
+// import SignUp from './SignUp.js';
+
 
 export default class App extends Component {
     render() {
         return (
             <div>
                 <Router>
+                    <Navigation />
                     <Switch>
                         <Route 
                             path="/" 
@@ -21,15 +25,20 @@ export default class App extends Component {
                             render={(routerProps) => <HomePage {...routerProps} />} 
                         />
                         {/* <Route 
-                            path="/quote" 
+                            path="/login" 
                             exact
-                            render={(routerProps) => <DetailPage {...routerProps} />} 
+                            render={(routerProps) => <LogIn {...routerProps} />} 
                         />
                         <Route 
-                          path="/users/:myId" 
-                          exact
-                          render={(routerProps) => <DetailPage {...routerProps} />} 
+                            path="/sign-up" 
+                            exact
+                            render={(routerProps) => <SignUp {...routerProps} />} 
                         /> */}
+                        <Route 
+                            path="/favorites" 
+                            exact
+                            render={(routerProps) => <Favorites {...routerProps} />} 
+                        />
                     </Switch>
                 </Router>
             </div>

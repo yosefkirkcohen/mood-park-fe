@@ -41,7 +41,6 @@ export default class HomePage extends Component {
                     {this.state.parks.map(park => <div> {park.fullName} <img src={park.images[0].url} alt={park.fullName} />  </div>)}
                 </div>
             </>
-
         )
     }
 }
