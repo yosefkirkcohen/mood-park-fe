@@ -39,7 +39,7 @@ export default class HomePage extends Component {
                     </form>
                 </div>
                 <div>
-                    {this.state.parks.map(park => <Link to={URL + '/park'}> {park.fullName} 
+                    {this.state.parks.map(park => <Link to={`/park/${park.parkCode}`}> {park.fullName} 
                                                     <img src={park.images[0].url} alt={park.fullName} />  
                     
                                                  </Link>)}

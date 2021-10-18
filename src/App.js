@@ -10,6 +10,7 @@ import Navigation from './Navigation.js';
 import Favorites from './Favorites.js';
 // import LogIn from './LogIn.js';
 // import SignUp from './SignUp.js';
+import DetailPage from './DetailPage.js';
 
 
 export default class App extends Component {
@@ -23,6 +24,11 @@ export default class App extends Component {
                             path="/" 
                             exact
                             render={(routerProps) => <HomePage {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/park/:_parkCode" 
+                            exact
+                            render={(routerProps) => <DetailPage {...routerProps} />} 
                         />
                         {/* <Route 
                             path="/login" 
