@@ -5,15 +5,33 @@ import {
     Switch,
 } from 'react-router-dom';
 import HomePage from './HomePage.js';
+
+
+import DetailPage from './DetailPage.js';
 import './App.css'
 import Navigation from './Navigation.js';
 import Favorites from './Favorites.js';
-// import LogIn from './LogIn.js';
-// import SignUp from './SignUp.js';
-import DetailPage from './DetailPage.js';
+import LogIn from './LogIn.js';
+import SignUp from './SignUp.js';
 
+
+const TOKEN_KEY = 'TOKEN'
 
 export default class App extends Component {
+
+state = {
+    token: localStorage.getItem(TOKEN_KEY) || ''
+  }
+
+tokenToLocalStorage = token => {
+    localStorage.setItem(TOKEN_KEY, token)
+    this.setState({ token: token })
+  }
+
+
+
+
+
     render() {
         return (
             <div>
@@ -30,16 +48,16 @@ export default class App extends Component {
                             exact
                             render={(routerProps) => <DetailPage {...routerProps} />} 
                         />
-                        {/* <Route 
+                        <Route 
                             path="/login" 
                             exact
-                            render={(routerProps) => <LogIn {...routerProps} />} 
+                            render={(routerProps) => <LogIn tokenToLocalStorage = {this.tokenToLocalStorage} {...routerProps} />} 
                         />
                         <Route 
                             path="/sign-up" 
                             exact
-                            render={(routerProps) => <SignUp {...routerProps} />} 
-                        /> */}
+                            render={(routerProps) => <SignUp tokenToLocalStorage = {this.tokenToLocalStorage} {...routerProps} />} 
+                        /> 
                         <Route 
                             path="/favorites" 
                             exact

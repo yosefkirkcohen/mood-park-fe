@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import {Link} from 'react-router-dom'
 
-const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+//const URL = 'https://mood-park-be.herokuapp.com'
+ const URL = 'http://localhost:7890'
 
 export default class HomePage extends Component {
 
