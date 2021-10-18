@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { signUp } from './utils.js';
+import { signUp } from './Utils.js';
 import { Link } from 'react-router-dom'
+
 
 export default class Signup extends Component {
 
@@ -12,10 +13,10 @@ export default class Signup extends Component {
     handleSubmit = async e => {
         e.preventDefault();
 
-        const user = await signUp(this.state.email, this.state.password); 
-        const token = user.token
+        const {token} = await signUp(this.state.email, this.state.password); 
+        // const token = user.token
         this.props.tokenToLocalStorage(token);
-        this.props.history.push('/HomePage')
+        this.props.history.push('/')
     }
    
 
@@ -37,7 +38,7 @@ export default class Signup extends Component {
                     </label>
                     <button>Submit</button>
                 </form>
-                <Link to = 'SignIn'>Already have an account?  Login</Link>
+                <Link to = '/login'>Already have an account?  Login</Link>
                 </section>
             </div>
         )

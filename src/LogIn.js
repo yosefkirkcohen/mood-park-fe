@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { login } from './utils.js'
+import { login } from './Utils.js'
 import { Link } from 'react-router-dom'
 
 
@@ -17,7 +17,7 @@ handleSubmit = async e => {
     const user = await login(this.state.email, this.state.password); 
     const token = user.token
     this.props.tokenToLocalStorage(token);
-    this.props.history.push('/HomePage')
+    this.props.history.push('/')
 }
 
 
@@ -43,7 +43,7 @@ render() {
                 <button color='primary'>Submit</button>
                 
             </form>
-            <Link to='SignUp'>Don't have an account yet?</Link>
+            <Link to='/sign-up'>Don't have an account yet?</Link>
             </section>
         </div>
     )

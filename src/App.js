@@ -9,6 +9,11 @@ import HomePage from './HomePage.js';
 
 
 import './App.css'
+import Navigation from './Navigation.js';
+import Favorites from './Favorites.js';
+import LogIn from './LogIn.js';
+import SignUp from './SignUp.js';
+
 
 const TOKEN_KEY = 'TOKEN'
 
@@ -31,22 +36,28 @@ tokenToLocalStorage = token => {
         return (
             <div>
                 <Router>
+                    <Navigation />
                     <Switch>
                         <Route 
                             path="/" 
                             exact
                             render={(routerProps) => <HomePage {...routerProps} />} 
                         />
-                        {/* <Route 
-                            path="/quote" 
+                         <Route 
+                            path="/login" 
                             exact
-                            render={(routerProps) => <DetailPage {...routerProps} />} 
+                            render={(routerProps) => <LogIn tokenToLocalStorage = {this.tokenToLocalStorage} {...routerProps} />} 
                         />
                         <Route 
-                          path="/users/:myId" 
-                          exact
-                          render={(routerProps) => <DetailPage {...routerProps} />} 
-                        /> */}
+                            path="/sign-up" 
+                            exact
+                            render={(routerProps) => <SignUp tokenToLocalStorage = {this.tokenToLocalStorage} {...routerProps} />} 
+                        /> 
+                        <Route 
+                            path="/favorites" 
+                            exact
+                            render={(routerProps) => <Favorites {...routerProps} />} 
+                        />
                     </Switch>
                 </Router>
             </div>
