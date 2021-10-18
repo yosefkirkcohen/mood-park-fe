@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import {Link} from 'react-router-dom'
 
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
@@ -38,7 +39,10 @@ export default class HomePage extends Component {
                     </form>
                 </div>
                 <div>
-                    {this.state.parks.map(park => <div> {park.fullName} <img src={park.images[0].url} alt={park.fullName} />  </div>)}
+                    {this.state.parks.map(park => <Link to={URL + '/park'}> {park.fullName} 
+                                                    <img src={park.images[0].url} alt={park.fullName} />  
+                    
+                                                 </Link>)}
                 </div>
             </>
 
