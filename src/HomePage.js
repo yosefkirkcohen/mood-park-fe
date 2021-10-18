@@ -45,7 +45,6 @@ export default class HomePage extends Component {
                                                  </Link>)}
                 </div>
             </>
-
         )
     }
 }
