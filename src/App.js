@@ -7,7 +7,7 @@ import {
 import HomePage from './HomePage.js';
 
 
-
+import DetailPage from './DetailPage.js';
 import './App.css'
 import Navigation from './Navigation.js';
 import Favorites from './Favorites.js';
@@ -43,7 +43,12 @@ tokenToLocalStorage = token => {
                             exact
                             render={(routerProps) => <HomePage {...routerProps} />} 
                         />
-                         <Route 
+                        <Route 
+                            path="/park/:_parkCode" 
+                            exact
+                            render={(routerProps) => <DetailPage {...routerProps} />} 
+                        />
+                        <Route 
                             path="/login" 
                             exact
                             render={(routerProps) => <LogIn tokenToLocalStorage = {this.tokenToLocalStorage} {...routerProps} />} 
