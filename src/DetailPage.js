@@ -38,7 +38,6 @@ export default class DetailPage extends Component {
             <div>
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
                 {this.state.park.name}
-<<<<<<< HEAD
                 <img src={this.state.park.images[0].url} alt='ok' /> 
                 {this.state.park.description}
                 
@@ -47,14 +46,6 @@ export default class DetailPage extends Component {
                     <Button variant="contained">Submit</Button>
                 </FormControl>
                 
-=======
-
-                <img src={this.state.park.images[0].url} alt='ok' />
-
-                {this.state.park.description}
-
-
->>>>>>> dd301491ca9ee1611cc7bb921a600845e634fcce
             </div>
             </React.Fragment>
         )
