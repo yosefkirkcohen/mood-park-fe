@@ -13,6 +13,7 @@ import Navigation from './Navigation.js';
 import Favorites from './Favorites.js';
 import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
+import AboutUs from './AboutUs.js';
 
 
 const TOKEN_KEY = 'TOKEN'
@@ -62,6 +63,11 @@ export default class App extends Component {
                             path="/favorites"
                             exact
                             render={(routerProps) => <Favorites token={this.state.token} {...routerProps} />}
+                        />
+                        <Route 
+                            path="/aboutus" 
+                            exact
+                            render={(routerProps) => <AboutUs {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
