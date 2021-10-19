@@ -44,9 +44,8 @@ export default class HomePage extends Component {
                     </form>
                 </div>
                 <div>
-                    {this.state.parks.map(park => <Link to={`/park/${park.parkCode}`}> {park.fullName}
+                    {this.state.parks.map(park => <Link to={`/park/${park.parkCode}`} key={park.fullName}> {park.fullName}
                         <img src={park.images[0].url} alt={park.fullName} />
-                        {console.log(isFavorite(park, this.state.favorites))}
                         {isFavorite(park, this.state.favorites) && "favorite"}
                     </Link>)}
                 </div>
