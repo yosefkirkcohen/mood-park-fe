@@ -3,6 +3,7 @@ import request from 'superagent'
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
 
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
@@ -64,16 +65,11 @@ export default class DetailPage extends Component {
                 <img src={this.state.park.images[0].url} alt='ok' /> 
                 {this.state.park.description}
                 
-                <FormControl>
-                    <TextField multiline label="Comment" id="Comment" variant="outlined" />
+                
+                    <TextField fullWidth = 'true' multiline = 'true' label="Comment" id="Comment" variant="outlined" />
                     <Button variant="contained">Submit</Button>
-                </FormControl>
                 
-
                 
-
-
-
             </div>
             
         )
