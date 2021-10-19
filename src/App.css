@@ -36,3 +36,7 @@ color: green;
 .bios img {
 max-width: 15vw;
 }
+
+img {
+  width: 100px;
+}

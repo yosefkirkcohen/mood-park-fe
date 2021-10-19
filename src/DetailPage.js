@@ -8,8 +8,14 @@ export default class DetailPage extends Component {
 
     state = {
         parkCode: '',
-        park: { images: [{ url: '' }] },
-        favorite: ''
+
+        park: {
+                images: [{url:''}],
+                activities: [{name: ''}],
+                entranceFees: [{cost: ''}],
+                operatingHours: [{standardHours: {monday: ''}}]
+                }
+
     }
 
     componentDidMount = async () => {
@@ -30,12 +36,29 @@ export default class DetailPage extends Component {
     render() {
         return (
             <div>
+
+                
+                {this.state.park.name} <br/>
+                {this.state.park.states} <br/>
+                {this.state.park.url} <br/>
+                
+               <img src={this.state.park.images[0].url} alt='ok' /> 
+                <br/>
+               {this.state.park.description} <br/> <br/>
+               Activities:
+               {console.log(this.state.park.activities)}
+               {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
+               <br/>
+               Cost: ${this.state.park.entranceFees[0].cost} <br/>
+               Hours: {this.state.park.operatingHours[0].standardHours.monday}
+                
+                
+
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
                 {this.state.park.name}
 
-                <img src={this.state.park.images[0].url} alt='ok' />
+                
 
-                {this.state.park.description}
 
 
             </div>
