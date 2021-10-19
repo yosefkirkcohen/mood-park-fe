@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
-    BrowserRouter as Router, 
-    Route, 
+    BrowserRouter as Router,
+    Route,
     Switch,
 } from 'react-router-dom';
 import HomePage from './HomePage.js';
@@ -15,20 +15,21 @@ import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
 import Cards from './Cards.js'
 import Cards2 from './Cards2.js'
+import AboutUs from './AboutUs.js';
 
 
 const TOKEN_KEY = 'TOKEN'
 
 export default class App extends Component {
 
-state = {
-    token: localStorage.getItem(TOKEN_KEY) || ''
-  }
+    state = {
+        token: localStorage.getItem(TOKEN_KEY) || ''
+    }
 
-tokenToLocalStorage = token => {
-    localStorage.setItem(TOKEN_KEY, token)
-    this.setState({ token: token })
-  }
+    tokenToLocalStorage = token => {
+        localStorage.setItem(TOKEN_KEY, token)
+        this.setState({ token: token })
+    }
 
   logout = () => {
     localStorage.clear()
@@ -44,30 +45,35 @@ tokenToLocalStorage = token => {
                 {this.state.token && <button onClick={this.logout}>Logout</button>}
                     <Navigation />
                     <Switch>
-                        <Route 
-                            path="/" 
+                        <Route
+                            path="/"
                             exact
-                            render={(routerProps) => <HomePage {...routerProps} />} 
+                            render={(routerProps) => <HomePage {...routerProps} />}
+                        />
+                        <Route
+                            path="/park/:_parkCode"
+                            exact
+                            render={(routerProps) => <DetailPage token={this.state.token} {...routerProps} />}
+                        />
+                        <Route
+                            path="/login"
+                            exact
+                            render={(routerProps) => <LogIn tokenToLocalStorage={this.tokenToLocalStorage} {...routerProps} />}
+                        />
+                        <Route
+                            path="/sign-up"
+                            exact
+                            render={(routerProps) => <SignUp tokenToLocalStorage={this.tokenToLocalStorage} {...routerProps} />}
+                        />
+                        <Route
+                            path="/favorites"
+                            exact
+                            render={(routerProps) => <Favorites token={this.state.token} {...routerProps} />}
                         />
                         <Route 
-                            path="/park/:_parkCode" 
+                            path="/aboutus" 
                             exact
-                            render={(routerProps) => <DetailPage {...routerProps} />} 
-                        />
-                        <Route 
-                            path="/login" 
-                            exact
-                            render={(routerProps) => <LogIn tokenToLocalStorage = {this.tokenToLocalStorage} {...routerProps} />} 
-                        />
-                        <Route 
-                            path="/sign-up" 
-                            exact
-                            render={(routerProps) => <SignUp tokenToLocalStorage = {this.tokenToLocalStorage} {...routerProps} />} 
-                        /> 
-                        <Route 
-                            path="/favorites" 
-                            exact
-                            render={(routerProps) => <Favorites {...routerProps} />} 
+                            render={(routerProps) => <AboutUs {...routerProps} />} 
                         />
                         <Route 
                             path="/Cards" 
