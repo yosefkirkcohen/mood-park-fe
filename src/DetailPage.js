@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
@@ -35,6 +38,8 @@ export default class DetailPage extends Component {
 
     render() {
         return (
+            
+            
             <div>
 
                 
@@ -56,12 +61,21 @@ export default class DetailPage extends Component {
 
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
                 {this.state.park.name}
+                <img src={this.state.park.images[0].url} alt='ok' /> 
+                {this.state.park.description}
+                
+                <FormControl>
+                    <TextField multiline label="Comment" id="Comment" variant="outlined" />
+                    <Button variant="contained">Submit</Button>
+                </FormControl>
+                
 
                 
 
 
 
             </div>
+            
         )
     }
 }

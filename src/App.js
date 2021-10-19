@@ -13,7 +13,10 @@ import Navigation from './Navigation.js';
 import Favorites from './Favorites.js';
 import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
+import Cards from './Cards.js'
+import Cards2 from './Cards2.js'
 import AboutUs from './AboutUs.js';
+import { Redirect } from 'react-router-dom'
 
 
 const TOKEN_KEY = 'TOKEN'
@@ -29,15 +32,20 @@ export default class App extends Component {
         this.setState({ token: token })
     }
 
-
-
+    logout = () => {
+        localStorage.clear()
+        this.setState({ token: ''});
+        // this.props.history.push('/')
+        //<Redirect to="/" />
+      }
 
 
     render() {
         return (
             <div>
                 <Router>
-                    <Navigation />
+                
+                    <Navigation token={this.state.token} logout={this.logout}/>
                     <Switch>
                         <Route
                             path="/"
@@ -62,12 +70,24 @@ export default class App extends Component {
                         <Route
                             path="/favorites"
                             exact
-                            render={(routerProps) => <Favorites token={this.state.token} {...routerProps} />}
+                            render={(routerProps) => this.state.token
+                                ? <Favorites token={this.state.token} {...routerProps} />
+                            :   <Redirect to='/'/>}
                         />
                         <Route 
                             path="/aboutus" 
                             exact
                             render={(routerProps) => <AboutUs {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/Cards" 
+                            exact
+                            render={(routerProps) => <Cards {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/Cards2" 
+                            exact
+                            render={(routerProps) => <Cards2 {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
