@@ -9,7 +9,7 @@ export default class Navigation extends Component {
                 <NavLink exact activeClassName="active" to="/favorites">My Parks</NavLink>
                 <NavLink exact activeClassName="active" to="/login">Log In</NavLink>
                 <NavLink exact activeClassName="active" to="/sign-up">Sign Up</NavLink>
-                <button onClick={this.props.logout}>Log Out</button>
+                
             </div>
         )
     }

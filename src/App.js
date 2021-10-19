@@ -13,6 +13,8 @@ import Navigation from './Navigation.js';
 import Favorites from './Favorites.js';
 import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
+import Cards from './Cards.js'
+import Cards2 from './Cards2.js'
 
 
 const TOKEN_KEY = 'TOKEN'
@@ -28,14 +30,18 @@ tokenToLocalStorage = token => {
     this.setState({ token: token })
   }
 
-
-
+  logout = () => {
+    localStorage.clear()
+    this.setState({ token: ''})
+    //this.history.push('/')
+  }
 
 
     render() {
         return (
             <div>
                 <Router>
+                {this.state.token && <button onClick={this.logout}>Logout</button>}
                     <Navigation />
                     <Switch>
                         <Route 
@@ -62,6 +68,16 @@ tokenToLocalStorage = token => {
                             path="/favorites" 
                             exact
                             render={(routerProps) => <Favorites {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/Cards" 
+                            exact
+                            render={(routerProps) => <Cards {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/Cards2" 
+                            exact
+                            render={(routerProps) => <Cards2 {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
