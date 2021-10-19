@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import CssBaseline from '@mui/material/CssBaseline';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -33,8 +32,8 @@ export default class DetailPage extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <CssBaseline />
+            
+            
             <div>
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
                 {this.state.park.name}
@@ -47,7 +46,7 @@ export default class DetailPage extends Component {
                 </FormControl>
                 
             </div>
-            </React.Fragment>
+            
         )
     }
 }

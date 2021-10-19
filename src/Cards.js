@@ -7,8 +7,8 @@ import CardActionArea from '@mui/material/CardActionArea';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Grid, CssBaseline, AppBar, Toolbar } from '@mui/material';
-import { Button } from '@mui/material';
+import { Grid, CssBaseline } from '@mui/material';
+//import { Button } from '@mui/material';
 
 const parks = [
     {
