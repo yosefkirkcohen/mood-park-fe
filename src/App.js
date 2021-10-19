@@ -74,10 +74,10 @@ export default class App extends Component {
                                 ? <Favorites token={this.state.token} {...routerProps} />
                             :   <Redirect to='/'/>}
                         />
-                        <Route 
-                            path="/aboutus" 
+                        <Route
+                            path="/aboutus"
                             exact
-                            render={(routerProps) => <AboutUs {...routerProps} />} 
+                            render={(routerProps) => <AboutUs {...routerProps} />}
                         />
                         <Route 
                             path="/Cards" 
