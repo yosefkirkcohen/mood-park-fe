@@ -64,10 +64,10 @@ export default class App extends Component {
                             exact
                             render={(routerProps) => <Favorites token={this.state.token} {...routerProps} />}
                         />
-                        <Route 
-                            path="/aboutus" 
+                        <Route
+                            path="/aboutus"
                             exact
-                            render={(routerProps) => <AboutUs {...routerProps} />} 
+                            render={(routerProps) => <AboutUs {...routerProps} />}
                         />
                     </Switch>
                 </Router>
