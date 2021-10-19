@@ -4,8 +4,8 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://mood-park-be.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -43,22 +43,6 @@ export default class DetailPage extends Component {
             
             
             <div>
-<<<<<<< HEAD
-                
-                {this.state.park.name} <br/>
-                {this.state.park.states} <br/>
-                {this.state.park.url} <br/>
-                
-               <img src={this.state.park.images[0].url} alt='ok' /> 
-                <br/>
-               {this.state.park.description} <br/> <br/>
-               Activities:
-               {console.log(this.state.park.activities)}
-               {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
-               <br/>
-               Cost: ${this.state.park.entranceFees[0].cost} <br/>
-               Hours: {this.state.park.operatingHours[0].standardHours.monday}
-=======
 
 
                 {this.state.park.name} <br />
@@ -81,21 +65,17 @@ export default class DetailPage extends Component {
                 {this.state.park.name}
                 <img src={this.state.park.images[0].url} alt='ok' /> 
                 {this.state.park.description}
->>>>>>> 9019971b98351c08ce86c81cdc1244555acb611e
                 
                 <FormControl>
                     <TextField multiline label="Comment" id="Comment" variant="outlined" />
                     <Button variant="contained">Submit</Button>
                 </FormControl>
                 
-<<<<<<< HEAD
-=======
 
 
 
 
 
->>>>>>> 9019971b98351c08ce86c81cdc1244555acb611e
             </div>
             
         )
