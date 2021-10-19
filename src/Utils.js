@@ -20,9 +20,8 @@ export async function signUp(email, password) {
 }
 
 export async function isFavorite(park, favorites) {
-    // take in park id, map through favorites id and see if there is a match with that park's id. If not, render normally. if is match, change render to?
-    // for the park, grab the id
-const baseParkId = park.parkCode;
-// map through favorites ids and check each one against baseParkID
-favorites.parkCode.map()
+
+return !!favorites.find( favorite => {
+    return favorite.parkcode === park.parkCode
+})
 }
