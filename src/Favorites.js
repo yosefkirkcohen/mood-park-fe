@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://mood-park-be.herokuapp.com'
+// const URL = 'http://localhost:7890'
 export default class Favorites extends Component {
     state = {
         favorites: []

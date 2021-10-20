@@ -15,7 +15,7 @@ const parks = [
         name: 'Yellowstone',
         description: `This place is awesome.  It lets you stand and look at things, and you can 
         walk around and throw things IN the trash can.`,
-        img: 'https://placekitten.com/200/200',
+        img: 'https://placekitten.com/300/300',
         park_code: 'abli',
         favorite: false
     },
@@ -29,14 +29,14 @@ const parks = [
     {
         name: 'Jellystone',
         description: `Watch out for the bears, and if they talk to you, run and hide.`,
-        img: 'https://placekitten.com/200/200',
+        img: 'https://placekitten.com/400/400',
         park_code: 'crab',
         favorite: false
     },
     {
         name: 'East Coast Park',
         description: `If you can do it anywhere, you can do it here.  This park is for the goombah's and the tough kids.`,
-        img: 'https://placekitten.com/200/200',
+        img: 'https://placekitten.com/250/250',
         park_code: 'ater',
         favorite: false
     },

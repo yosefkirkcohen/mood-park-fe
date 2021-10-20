@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+ 
 
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://mood-park-be.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -27,7 +27,7 @@ export default class DetailPage extends Component {
         const parkCode = this.props.match.params._parkCode
         const response = await request.get(URL + `/parkDetail/${parkCode}`);
         
-        this.setState({ park: response.body.data[0] })
+        this.setState({ park: response.body.data[0], parkCode: parkCode })
 
         const token = this.props.token
         if (token) {
@@ -43,20 +43,17 @@ export default class DetailPage extends Component {
         return response.body.data
     }
 
-    handleComment = async () => {
+    handleCommentSubmit = async (e) => {
+        e.preventDefault();
         const token = this.props.token;
-        const response = await request.post(`${URL}/api/comments`).send(this.state.comment).set('Authorization', token)
-        return response.body.data
+        const response = await request.post(`${URL}/api/comments`).send({comment: this.state.comment, parkcode: this.state.parkCode}).set('Authorization', token)
+
+        this.componentDidMount()
     }
 
     render() {
-        console.log(this.state.park.images);
         return (
-
-
             <div>
-
-
                 {this.state.park.name} <br />
                 {this.state.park.states} <br />
                 {this.state.park.url} <br />
@@ -65,7 +62,7 @@ export default class DetailPage extends Component {
                 <br />
                 {this.state.park.description} <br /> <br />
                 Activities:
-                {console.log(this.state.park.activities)}
+                
                 {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
                 <br />
                 Cost: ${this.state.park.entranceFees[0].cost} <br />
@@ -78,21 +75,28 @@ export default class DetailPage extends Component {
                 <img src={this.state.park.images[0].url} alt='ok' />
                 {this.state.park.description}
 
-                <FormControl>
-                    <TextField multiline label="Comment" id="Comment" variant="outlined" />
-                    <Button variant="contained">Submit</Button>
-                </FormControl>
+                
 
-                <form>
+                <form onSubmit={this.handleCommentSubmit}>
                     <input value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
-                    <button onClick={this.handleComment}>Post</button>
+                    <button>Post</button>
                 </form>
 
                 <section>
-                    {this.state.comments.map(comment => comment.comment)}
+                    {this.state.comments.map(comment => {
+                        return <div>
+                        {comment.comment} <br/>
+                         User: {comment.owner_id}
+                        </div>
+                        })}
                 </section>
 
 
+               
+                
+                    <TextField fullWidth = 'true' multiline = 'true' rows = {4} label="Comment" id="Comment" variant="outlined" />
+                    <Button variant="contained" type = 'submit'>Submit</Button>
+                
             </div>
 
         )
