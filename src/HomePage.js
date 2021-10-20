@@ -12,11 +12,11 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
-import DetailPage from './DetailPage.js';
+// import DetailPage from './DetailPage.js';
 
 
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://mood-park-be.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class HomePage extends Component {
 
