@@ -35,7 +35,7 @@ handleSubmit = async e => {
 render() {
     return (
         <div>
-            <section>
+            {/* <section>
                 <h4> Sign In </h4>
             <form onSubmit={this.handleSubmit }>
                    
@@ -55,7 +55,7 @@ render() {
                 
             </form>
             <Link to='/sign-up'>Don't have an account yet?</Link>
-            </section>
+            </section> */}
         
 
 

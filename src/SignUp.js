@@ -33,7 +33,7 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
-                <section>
+                {/* <section>
                     <h4> Sign up </h4>
                 <form onSubmit={this.handleSubmit }>
                     <label>
@@ -49,7 +49,7 @@ export default class Signup extends Component {
                     <button>Submit</button>
                 </form>
                 <Link to = '/login'>Already have an account?  Login</Link>
-                </section>
+                </section> */}
 
 
 
