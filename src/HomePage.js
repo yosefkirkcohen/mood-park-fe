@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import { Link } from 'react-router-dom'
-import { isFavorite } from './Utils.js'
+// import { Link } from 'react-router-dom'
+// import { isFavorite } from './Utils.js'
 
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
