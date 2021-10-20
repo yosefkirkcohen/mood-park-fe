@@ -4,8 +4,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
  
 
-const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+// const URL = 'https://mood-park-be.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -54,6 +54,8 @@ export default class DetailPage extends Component {
     render() {
         return (
             <div>
+                <button onClick={this.handleFavorite}> Add to Favorites </button>
+                <br/>
                 {this.state.park.name} <br />
                 {this.state.park.states} <br />
                 {this.state.park.url} <br />
@@ -67,26 +69,22 @@ export default class DetailPage extends Component {
                 <br />
                 Cost: ${this.state.park.entranceFees[0].cost} <br />
                 Hours: {this.state.park.operatingHours[0].standardHours.monday}
-
-
-
-                <button onClick={this.handleFavorite}> Add to Favorites </button>
-                {this.state.park.name}
-                <img src={this.state.park.images[0].url} alt='ok' />
-                {this.state.park.description}
+                <br/>
 
                 
-
                 <form onSubmit={this.handleCommentSubmit}>
+                    <label>
+                        Post a comment here
+                    </label>
                     <input value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
                     <button>Post</button>
                 </form>
 
                 <section>
                     {this.state.comments.map(comment => {
-                        return <div>
+                        return <div className='comments'>
                         {comment.comment} <br/>
-                         User: {comment.owner_id}
+                         <div className='user'>User {comment.owner_id} </div>
                         </div>
                         })}
                 </section>

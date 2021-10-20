@@ -40,3 +40,13 @@ max-width: 15vw;
 img {
   width: 100px;
 }
+
+.comments {
+  border: solid 1px black;
+  width: 500px;
+  margin-bottom: 10px;
+}
+
+.user {
+  font-size: 0.7rem;
+}
