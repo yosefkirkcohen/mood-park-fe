@@ -12,7 +12,7 @@ export default class Navigation extends Component {
         return (
             <div>
                 <NavLink exact activeClassName="active" to="/">Home</NavLink>
-                <NavLink exact activeClassName="active" to="/favorites">Favorite Parks</NavLink>
+                {this.props.token && <NavLink exact activeClassName="active" to="/favorites">Favorite Parks</NavLink>}
                 <NavLink exact activeClassName="active" to="/login">Log In</NavLink>
                 <NavLink exact activeClassName="active" to="/sign-up">Sign Up</NavLink>
                 <NavLink exact activeClassName="active" to="/aboutus">About Us</NavLink>
