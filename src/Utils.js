@@ -18,3 +18,10 @@ export async function signUp(email, password) {
     
     return response.body;
 }
+
+export function isFavorite(park, favorites) {
+
+return !!favorites.find( favorite => {
+    return favorite.parkcode === park.parkCode
+})
+}
