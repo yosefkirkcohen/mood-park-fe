@@ -25,9 +25,11 @@ handleSubmit = async e => {
     e.preventDefault();
     
     const user = await login(this.state.email, this.state.password); 
+    if (user) {
     const token = user.token
     this.props.tokenToLocalStorage(token);
-    this.props.history.push('/')
+    this.props.history.push('/') }
+    else { this.setState({password:''}) }
 }
 
 
