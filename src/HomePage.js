@@ -3,6 +3,17 @@ import request from 'superagent'
 import { Link } from 'react-router-dom'
 import { isFavorite } from './Utils.js'
 
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import CardActionArea from '@mui/material/CardActionArea';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Grid } from '@mui/material';
+import DetailPage from './DetailPage.js';
+
 // const URL = 'https://mood-park-be.herokuapp.com'
 const URL = 'http://localhost:7890'
 
@@ -58,3 +69,36 @@ export default class HomePage extends Component {
         )
     }
 }
+
+<Grid
+  container 
+  direction="row"
+  justifyContent="space-evenly"
+  alignItems="center"
+> 
+
+<Card sx={{ maxWidth: 345 }} raised = 'true'>
+<CardActionArea component={DetailPage} to="/park/:_parkCode" >
+  <CardMedia
+    component="img"
+    height="140"
+    image={park.images[0].url}
+    alt={park.fullname}
+  />
+  <CardContent>
+    <Typography gutterBottom variant="h5" component="div">
+      {park.fullname}
+    </Typography>
+    <Typography variant="body2" color="text.secondary">
+      {park.description}
+    </Typography>
+  </CardContent>
+</CardActionArea>
+<CardActions>
+    <IconButton size='large' color = "error" aria-label="add to favorites">
+    <FavoriteIcon />
+  </IconButton> 
+</CardActions>
+</Card>
+
+</Grid>
