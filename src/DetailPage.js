@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+ 
 
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://mood-park-be.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -25,6 +25,7 @@ export default class DetailPage extends Component {
 
         const parkCode = this.props.match.params._parkCode
         const response = await request.get(URL + `/parkDetail/${parkCode}`);
+        console.log(response.body.data[0]);
         this.setState({ park: response.body.data[0] })
 
         console.log(this.state.park)
@@ -33,15 +34,16 @@ export default class DetailPage extends Component {
 
     handleFavorite = async () => {
         const token = this.props.token
-        const response = await request.post(`${URL}/api/favorite`).send(this.state.park).set('Authorization', token)
+        const response = await request.post(`${URL}/api/favorites`).send(this.state.park).set('Authorization', token)
         return response.body.data
 
     }
 
     render() {
+        console.log(this.state.park.images);
         return (
-            
-            
+
+
             <div>
 
 
@@ -63,21 +65,15 @@ export default class DetailPage extends Component {
 
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
                 {this.state.park.name}
-                <img src={this.state.park.images[0].url} alt='ok' /> 
+                <img src={this.state.park.images[0].url} alt='ok' />
                 {this.state.park.description}
+            y    
                 
-                <FormControl>
-                    <TextField multiline label="Comment" id="Comment" variant="outlined" />
-                    <Button variant="contained">Submit</Button>
-                </FormControl>
+                    <TextField fullWidth = 'true' multiline = 'true' rows = {4} label="Comment" id="Comment" variant="outlined" />
+                    <Button variant="contained" type = 'submit'>Submit</Button>
                 
-
-
-
-
-
             </div>
-            
+
         )
     }
 }

@@ -28,9 +28,14 @@ export default class HomePage extends Component {
     componentDidMount = async () => {
         const token = this.props.token
         const response = await request.get(URL + '/parks')
-        // if statement that looks for token, if found, run favs, if not, ignore
-        // const favs = await request.get(`${URL}/api/favorites`).set('Authorization', token)
-        this.setState({ parks: response.body.data })
+        if (token) {
+        const favs = await request.get(`${URL}/api/favorites`).set
+        ('Authorization', token)
+        this.setState({favorites: favs.body})
+        }
+        this.setState({ parks: response.body.data,
+         })
+        
     }
     render() {
         return (

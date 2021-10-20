@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import HomePage from './HomePage.js';
 
-
+import Menu from './Menu.js'
 import DetailPage from './DetailPage.js';
 import './App.css'
 import Navigation from './Navigation.js';
@@ -88,6 +88,11 @@ export default class App extends Component {
                             path="/Cards2" 
                             exact
                             render={(routerProps) => <Cards2 {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/Menu" 
+                            exact
+                            render={(routerProps) => <Menu {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
