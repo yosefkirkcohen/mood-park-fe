@@ -14,6 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
 import DetailPage from './DetailPage.js';
 
+
 // const URL = 'https://mood-park-be.herokuapp.com'
 const URL = 'http://localhost:7890'
 
@@ -50,7 +51,12 @@ export default class HomePage extends Component {
     }
     render() {
         return (
-            <>
+            <Grid
+            container
+            direction="column"
+            justifyContent="top"
+            alignItems="center"
+          > 
             <section>
                 <h1>Parks 4ME</h1>
                 <p>Parks 4ME helps you figure out the next national treasure you want to visit. Save a list of your favorite National parks, leave comments about the parks you have been to, and view what other's have to say. Sign up for an account to start start your journey.</p>
@@ -63,26 +69,22 @@ export default class HomePage extends Component {
                         <button type='submit'> Find Park </button>
                     </form>
                 </div>
-                <div>
-                    {this.state.parks.map(park => <Link to={`/park/${park.parkCode}`} key={park.fullName}> {park.fullName}
-                        <img src={park.images[0].url} alt={park.fullName} />
-                        {isFavorite(park, this.state.favorites) && "favorite"}
-                    </Link>)}
-                </div>
-            </>
-        )
-    }
-}
+                
 
 <Grid
-  container 
+  container
   direction="row"
   justifyContent="space-evenly"
   alignItems="center"
 > 
 
-<Card sx={{ maxWidth: 345 }} raised = 'true'>
-<CardActionArea component={DetailPage} to="/park/:_parkCode" >
+
+                    {this.state.parks.map(park => 
+                    
+
+
+<Card sx={{ maxWidth: 345 }}>
+<CardActionArea href={`/park/${park.parkCode}`}>
   <CardMedia
     component="img"
     height="140"
@@ -91,7 +93,7 @@ export default class HomePage extends Component {
   />
   <CardContent>
     <Typography gutterBottom variant="h5" component="div">
-      {park.fullname}
+      {park.fullName}
     </Typography>
     <Typography variant="body2" color="text.secondary">
       {park.description}
@@ -105,4 +107,13 @@ export default class HomePage extends Component {
 </CardActions>
 </Card>
 
-</Grid>
+
+                   
+                
+ ) }
+ </Grid>
+            </Grid>
+)        
+    
+}
+}
