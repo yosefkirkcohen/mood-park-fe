@@ -105,10 +105,7 @@ export default class HomePage extends Component {
     <FavoriteIcon />
   </IconButton> 
 </CardActions>
-</Card>
-
-
-                   
+</Card>            
                 
  ) }
  </Grid>

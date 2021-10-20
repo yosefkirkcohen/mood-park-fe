@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
  
 
 const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+//  const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
