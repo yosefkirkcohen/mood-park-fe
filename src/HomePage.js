@@ -51,6 +51,8 @@ export default class HomePage extends Component {
             parks: response.body.data,
         })
 
+
+
     }
     render() {
         return (
@@ -110,10 +112,6 @@ export default class HomePage extends Component {
                                 </IconButton>
                             </CardActions>
                         </Card>
-
-
-
-
                     )}
                 </Grid>
             </Grid>
