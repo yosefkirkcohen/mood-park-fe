@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
- 
+import { InputLabel } from '@material-ui/core';
+
 
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
@@ -26,13 +27,13 @@ export default class DetailPage extends Component {
 
         const parkCode = this.props.match.params._parkCode
         const response = await request.get(URL + `/parkDetail/${parkCode}`);
-        
+
         this.setState({ park: response.body.data[0], parkCode: parkCode })
 
         const token = this.props.token
         if (token) {
-        const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
-            this.setState({comments: comments.body})
+            const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
+            this.setState({ comments: comments.body })
             console.log(this.state.comments)
         }
     }
@@ -46,7 +47,7 @@ export default class DetailPage extends Component {
     handleCommentSubmit = async (e) => {
         e.preventDefault();
         const token = this.props.token;
-         await request.post(`${URL}/api/comments`).send({comment: this.state.comment, parkcode: this.state.parkCode}).set('Authorization', token)
+        await request.post(`${URL}/api/comments`).send({ comment: this.state.comment, parkcode: this.state.parkCode }).set('Authorization', token)
 
         this.componentDidMount()
     }
@@ -62,7 +63,7 @@ export default class DetailPage extends Component {
                 <br />
                 {this.state.park.description} <br /> <br />
                 Activities:
-                
+
                 {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
                 <br />
                 Cost: ${this.state.park.entranceFees[0].cost} <br />
@@ -75,28 +76,27 @@ export default class DetailPage extends Component {
                 <img src={this.state.park.images[0].url} alt='ok' />
                 {this.state.park.description}
 
-                
 
-                <form onSubmit={this.handleCommentSubmit}>
-                    <input value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
+
+                {/* <form onSubmit={this.handleCommentSubmit}>
+                    <input value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
                     <button>Post</button>
-                </form>
-
+                </form> */}
+                <div>
+                    <form onSubmit={this.handleCommentSubmit}>
+                        <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
+                        <TextField fullWidth='true' multiline='true' rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
+                        <Button variant="contained" type='submit'>Post</Button>
+                    </form>
+                </div>
                 <section>
                     {this.state.comments.map(comment => {
                         return <div>
-                        {comment.comment} <br/>
-                         User: {comment.owner_id}
+                            {comment.comment} <br />
+                            User: {comment.owner_id}
                         </div>
-                        })}
+                    })}
                 </section>
-
-
-               
-                
-                    <TextField fullWidth = 'true' multiline = 'true' rows = {4} label="Comment" id="Comment" variant="outlined" />
-                    <Button variant="contained" type = 'submit'>Submit</Button>
-                
             </div>
 
         )
