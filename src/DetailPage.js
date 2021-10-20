@@ -46,7 +46,7 @@ export default class DetailPage extends Component {
     handleCommentSubmit = async (e) => {
         e.preventDefault();
         const token = this.props.token;
-        const response = await request.post(`${URL}/api/comments`).send({comment: this.state.comment, parkcode: this.state.parkCode}).set('Authorization', token)
+         await request.post(`${URL}/api/comments`).send({comment: this.state.comment, parkcode: this.state.parkCode}).set('Authorization', token)
 
         this.componentDidMount()
     }
