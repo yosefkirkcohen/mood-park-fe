@@ -23,10 +23,11 @@ export default class Signup extends Component {
     handleSubmit = async e => {
         e.preventDefault();
 
-        const {token} = await signUp(this.state.email, this.state.password); 
-        // const token = user.token
+        const token = await signUp(this.state.email, this.state.password);
+        if (token !== null) { 
         this.props.tokenToLocalStorage(token);
-        this.props.history.push('/')
+        this.props.history.push('/')}
+        else { this.setState({email:'', password:''}) }
     }
    
 
