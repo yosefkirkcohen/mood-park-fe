@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { login } from './Utils.js'
 import { Link } from 'react-router-dom'
-
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,7 +10,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 
 
@@ -119,7 +118,7 @@ render() {
               <Grid item xs>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="sign-up" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
