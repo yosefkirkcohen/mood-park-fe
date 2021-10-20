@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import HomePage from './HomePage.js';
 
-
+import Menu from './Menu.js'
 import DetailPage from './DetailPage.js';
 import './App.css'
 import Navigation from './Navigation.js';
@@ -74,10 +74,10 @@ export default class App extends Component {
                                 ? <Favorites token={this.state.token} {...routerProps} />
                             :   <Redirect to='/'/>}
                         />
-                        <Route 
-                            path="/aboutus" 
+                        <Route
+                            path="/aboutus"
                             exact
-                            render={(routerProps) => <AboutUs {...routerProps} />} 
+                            render={(routerProps) => <AboutUs {...routerProps} />}
                         />
                         <Route 
                             path="/Cards" 
@@ -88,6 +88,11 @@ export default class App extends Component {
                             path="/Cards2" 
                             exact
                             render={(routerProps) => <Cards2 {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/Menu" 
+                            exact
+                            render={(routerProps) => <Menu {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
