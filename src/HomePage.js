@@ -12,7 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
-import Menu from './Menu.js'
 import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
 import { removeFavorite } from './Utils.js';

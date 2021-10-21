@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import Menu from './Menu.js'
+
 
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
