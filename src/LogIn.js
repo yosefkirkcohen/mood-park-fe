@@ -11,9 +11,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-
-
-
 export default class Signin extends Component {
     
     state = {
@@ -32,40 +29,9 @@ handleSubmit = async e => {
     else { this.setState({password:''}) }
 }
 
-
 render() {
     return (
-        <div>
-            {/* <section>
-                <h4> Sign In </h4>
-            <form onSubmit={this.handleSubmit }>
-                   
-                <label>
-                    Email
-                </label>
-                    <input value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} 
-                    type='email'></input>
-                
-                <label>
-                    password
-                    <input value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} 
-                    type='password'></input>
-                </label>
-                
-                <button color='primary'>Submit</button>
-                
-            </form>
-            <Link to='/sign-up'>Don't have an account yet?</Link>
-            </section> */}
-        
-
-
-
-
-
-
-
-
+        <div>  
 <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -130,19 +96,6 @@ render() {
         {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
     )
 }
 }
