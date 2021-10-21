@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { InputLabel } from '@material-ui/core';
 
-
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
 
@@ -12,7 +11,6 @@ export default class DetailPage extends Component {
 
     state = {
         parkCode: '',
-
         park: {
             images: [{ url: '' }],
             activities: [{ name: '' }],
@@ -20,7 +18,8 @@ export default class DetailPage extends Component {
             operatingHours: [{ standardHours: { monday: '' } }]
         },
         comment: '',
-        comments: []
+        comments: [],
+        userId: ''
     }
 
     componentDidMount = async () => {
@@ -35,6 +34,9 @@ export default class DetailPage extends Component {
             const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
             this.setState({ comments: comments.body })
             console.log(this.state.comments)
+        
+        const userId = await request.get(URL + '/api/user').set('Authorization', token);
+        this.setState({userId: userId.body.id})
         }
     }
 
@@ -52,10 +54,19 @@ export default class DetailPage extends Component {
         this.componentDidMount()
     }
 
+    handlePostEdit = async(commentId) => {
+        const token = this.props.token;
+        await request.put(`${URL}/api/comments/${commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
+
+        this.componentDidMount()
+    }
+
     render() {
         console.log(this.state.park)
         return (
             <div>
+                <button onClick={this.handleFavorite}> Add to Favorites </button>
+                <br/>
                 {this.state.park.name} <br />
                 {this.state.park.states} <br />
                 {this.state.park.url} <br />
@@ -67,16 +78,9 @@ export default class DetailPage extends Component {
 
                 {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
                 <br />
-                Cost: ${this.state.park.entranceFees[0].cost} <br />
+                Park Fee: ${this.state.park.entranceFees[0].cost} <br />
                 Hours: {this.state.park.operatingHours[0].standardHours.monday}
-
-
-
-                <button onClick={this.handleFavorite}> Add to Favorites </button>
-                {this.state.park.name}
-                <img src={this.state.park.images[0].url} alt='ok' />
-                {this.state.park.description}
-
+                <br/> <br/>
 
 
                 {/* <form onSubmit={this.handleCommentSubmit}>
@@ -91,15 +95,22 @@ export default class DetailPage extends Component {
                     </form>
                 </div>
                 <section>
+                    <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
                     {this.state.comments.map(comment => {
-                        return <div>
-                            {comment.comment} <br />
-                            User: {comment.owner_id}
+                        return <div className='comments'>
+                        {comment.comment} <br/>
+
+                        {console.log(comment)}
+                        
+                         <div className='user'>User {comment.owner_id} </div>
+                         { comment.owner_id === this.state.userId 
+                         &&
+                         <button onClick={() => this.handlePostEdit(comment.id)}>Edit post</button>
+                         }
                         </div>
                     })}
                 </section>
             </div>
-
         )
     }
 }
