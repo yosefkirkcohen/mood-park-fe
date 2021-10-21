@@ -34,28 +34,6 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
-                {/* <section>
-                    <h4> Sign up </h4>
-                <form onSubmit={this.handleSubmit }>
-                    <label>
-                        email
-                        <input value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} 
-                        type='email'></input>
-                    </label>
-                    <label>
-                        password
-                        <input value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} 
-                        type='password'></input>
-                    </label>
-                    <button>Submit</button>
-                </form>
-                <Link to = '/login'>Already have an account?  Login</Link>
-                </section> */}
-
-
-
-
-
                 <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -120,28 +98,6 @@ export default class Signup extends Component {
         </Box>
         {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
         )
     }

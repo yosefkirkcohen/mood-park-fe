@@ -4,15 +4,13 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { InputLabel } from '@material-ui/core';
 
-
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://mood-park-be.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
     state = {
         parkCode: '',
-
         park: {
             images: [{ url: '' }],
             activities: [{ name: '' }],
@@ -112,7 +110,6 @@ export default class DetailPage extends Component {
                     })}
                 </section>
             </div>
-
         )
     }
 }

@@ -15,7 +15,6 @@ export async function login(email, password) {
     }
 }
 
-//signup: 
 export async function signUp(email, password) {
     try {const response = await request
     .post(`${URL}/auth/signup`)
@@ -31,7 +30,6 @@ export async function signUp(email, password) {
 }
 
 export function isFavorite(park, favorites) {
-
 return !!favorites.find( favorite => {
     return favorite.parkcode === park.parkCode
 })
