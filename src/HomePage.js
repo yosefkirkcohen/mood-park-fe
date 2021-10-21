@@ -91,7 +91,10 @@ export default class HomePage extends Component {
     }
 
     render() {
+        
         return (
+        <React.Fragment>
+        
             <Grid
                 container
                 direction="column"
@@ -117,10 +120,10 @@ export default class HomePage extends Component {
                     container
                     direction="row"
                     justifyContent="space-evenly"
-                    alignItems="center"
+                    alignItems="top"
                 >
                     {this.state.parks.map(park =>
-                        <Card sx={{ maxWidth: 345 }}>
+                        <Card style = {{display: 'flex', justifyContent: 'space-between', flexDirection: 'column', marginBottom: '10px' }} sx={{ maxWidth: 345 }}>
                             <CardActionArea href={`/park/${park.parkCode}`}>
                                 <CardMedia
                                     component="img"
@@ -136,6 +139,7 @@ export default class HomePage extends Component {
                                         {park.description}
                                     </Typography>
                                 </CardContent>
+                                {/* <div style = {{height: 100}}></div> */}
                             </CardActionArea>
                             <CardActions>
                                 {
@@ -152,6 +156,7 @@ export default class HomePage extends Component {
                     )}
                 </Grid>
             </Grid>
+            </React.Fragment>
         )
     }
 }

@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+
+ 
 import { InputLabel } from '@material-ui/core';
 
 const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+//  const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -64,6 +66,8 @@ export default class DetailPage extends Component {
     render() {
         console.log(this.state.park)
         return (
+            <React.Fragment>
+                
             <div>
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
                 <br />
@@ -109,6 +113,8 @@ export default class DetailPage extends Component {
                     })}
                 </section>
             </div>
+
+            </React.Fragment>
         )
     }
 }

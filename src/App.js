@@ -15,6 +15,7 @@ import LogIn from './LogIn.js';
 import SignUp from './SignUp.js';
 import Cards from './Cards.js'
 import Cards2 from './Cards2.js'
+import Menu2 from './Menu2.js'
 import AboutUs from './AboutUs.js';
 import { Redirect } from 'react-router-dom'
 
@@ -90,6 +91,12 @@ export default class App extends Component {
                             path="/Menu" 
                             exact
                             render={(routerProps) => <Menu {...routerProps} />} 
+                        />
+                        />
+                        <Route 
+                            path="/Menu2" 
+                            exact
+                            render={(routerProps) => <Menu2 {...routerProps} />} 
                         />
                     </Switch>
                 </Router>

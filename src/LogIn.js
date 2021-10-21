@@ -11,6 +11,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+
 export default class Signin extends Component {
     
     state = {
@@ -32,6 +33,7 @@ handleSubmit = async e => {
 render() {
     return (
         <div>  
+            
 <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -86,7 +88,7 @@ render() {
               <Grid item xs>
               </Grid>
               <Grid item>
-                <Link href="sign-up" variant="body2">
+                <Link to='/sign-up' variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
