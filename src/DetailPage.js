@@ -53,6 +53,7 @@ export default class DetailPage extends Component {
     }
 
     render() {
+        console.log(this.state.park)
         return (
             <div>
                 {this.state.park.name} <br />

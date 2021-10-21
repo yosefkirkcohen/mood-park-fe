@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 // import { Link } from 'react-router-dom'
-// import { isFavorite } from './Utils.js'
+import { isFavorite } from './Utils.js'
 
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -14,7 +14,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
 import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
+import { removeFavorite } from './Utils.js';
 // import DetailPage from './DetailPage.js';
+
 
 
 const URL = 'https://mood-park-be.herokuapp.com'
@@ -25,7 +27,9 @@ export default class HomePage extends Component {
     state = {
         parks: [],
         SearchPark: '',
-        favorites: []
+        favorites: [],
+        parkCode: ''
+
     }
 
     submitPark = async (e) => {
@@ -38,6 +42,24 @@ export default class HomePage extends Component {
     handleSearch = async (e) => {
         this.setState({ SearchPark: e.target.value })
     }
+
+    // handleRemove = async (parkCode) => {
+    //     const token = this.props.token
+    //     removeFavorite(parkCode, token)
+    //     this.setState({ parkCode: parkCode })
+    // }
+
+    handleFavorite = async (park) => {
+
+        const token = this.props.token
+        await request.post(`${URL}/api/favorites`).send(park).set('Authorization', token)
+        const favs = await request.get(`${URL}/api/favorites`).set
+            ('Authorization', token)
+        this.setState({ favorites: favs.body })
+        console.log(favs.body)
+    }
+
+
 
     componentDidMount = async () => {
         const token = this.props.token
@@ -107,9 +129,15 @@ export default class HomePage extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <IconButton size='large' color="error" aria-label="add to favorites">
-                                    <FavoriteIcon />
-                                </IconButton>
+                                {
+                                    isFavorite(park, this.state.favorites)
+                                        ? <IconButton size='large' color='error' aria-label="add to favorites" onClick={() => removeFavorite(park.parkCode, this.props.token)}>
+                                            <FavoriteIcon />
+                                        </IconButton>
+                                        : <IconButton size='large' aria-label="add to favorites" onClick={() => this.handleFavorite(park)}>
+                                            <FavoriteIcon />
+                                        </IconButton>
+                                }
                             </CardActions>
                         </Card>
                     )}
@@ -120,3 +148,4 @@ export default class HomePage extends Component {
     }
 }
 //comment
+// {isFavorite(park, this.state.favorites) && "favorite"}
