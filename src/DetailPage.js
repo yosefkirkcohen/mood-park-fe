@@ -7,8 +7,8 @@ import Button from '@mui/material/Button';
 import { InputLabel } from '@material-ui/core';
 import './DetailPage.css'
 
-const URL = 'https://cryptic-dusk-44349.herokuapp.com'
-//  const URL = 'http://localhost:7890'
+// const URL = 'https://cryptic-dusk-44349.herokuapp.com'
+ const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -38,9 +38,10 @@ export default class DetailPage extends Component {
             this.setState({ comments: comments.body })
             console.log(comments.body)
 
-            const userId = await request.get(URL + '/api/user').set('Authorization', token);
-            console.log(userId)
-            this.setState({ userId: userId.body.id })
+            // const userId = await request.get(URL + '/api/user').set('Authorization', token);
+            // console.log(userId)
+            const userID = localStorage.getItem('USER_ID')
+            this.setState({ userId: userID})
         }
     }
 
@@ -101,13 +102,14 @@ export default class DetailPage extends Component {
                 </div>
                 <section>
                     <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
-                    {this.state.comments.map(comment => {
+                    {this.state.comments.sort((a,b) => b.park_timestamp-a.park_timestamp).map(comment => {
                         return <div className='comments'>
                             {comment.comment} <br />
-                            {comment.timestamp}
+                            {new Date(Number(comment.park_timestamp)).toLocaleDateString()}
 
                             <div className='user'>User {comment.owner_id} </div>
-                            {comment.owner_id === this.state.userId
+                            {console.log(comment.owner_id, this.state.userId)}
+                            {comment.owner_id === Number(this.state.userId)
                                 &&
                                 <button onClick={() => this.handlePostEdit(comment.id)}>Edit post</button>
                             }
