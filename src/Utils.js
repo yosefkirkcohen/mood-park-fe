@@ -22,7 +22,7 @@ export async function signUp(email, password) {
             .post(`${URL}/auth/signup`)
             .send({ email, password })
 
-        return response.body;
+        return response.body.token;
     }
     catch (e) {
         console.log(e);
