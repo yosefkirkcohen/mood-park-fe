@@ -23,7 +23,7 @@ export async function signUp(email, password) {
             .post(`${URL}/auth/signup`)
             .send({ email, password })
 
-        return response.body.token;
+        return response.body;
     }
     catch (e) {
         console.log(e);
@@ -31,6 +31,21 @@ export async function signUp(email, password) {
         return null;
     }
 }
+
+// export async function getUserId(email, password) {
+//     try {
+//         const response = await request
+//             .post(`${URL}/auth/signup`)
+//             .send({ email, password })
+
+//         return response.body.id;
+//     }
+//     catch (e) {
+//         console.log(e);
+//         alert('Email address associated with existing account');
+//         return null;
+//     }
+// }
 
 export function isFavorite(park, favorites) {
 
