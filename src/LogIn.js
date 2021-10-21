@@ -33,7 +33,7 @@ handleSubmit = async e => {
 render() {
     return (
         <div>  
-            <Menu />
+            
 <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

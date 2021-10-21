@@ -72,7 +72,7 @@ export default class HomePage extends Component {
         
         return (
         <React.Fragment>
-        <Menu />
+        
             <Grid
                 container
                 direction="column"

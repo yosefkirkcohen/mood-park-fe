@@ -33,7 +33,7 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
-                <Menu />
+                
                 <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

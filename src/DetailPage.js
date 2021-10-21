@@ -66,7 +66,7 @@ export default class DetailPage extends Component {
     render() {
         return (
             <React.Fragment>
-                <Menu />
+                
             <div>
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
                 <br/>

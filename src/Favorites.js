@@ -19,7 +19,7 @@ export default class Favorites extends Component {
     render() {
         return (
         <React.Fragment>
-            <Menu />
+            
             <div>
                 {this.state.favorites.map(favs => <div key={favs.fullname}> <h1>{favs.fullname}</h1>
                     <p> {favs.description}</p>
