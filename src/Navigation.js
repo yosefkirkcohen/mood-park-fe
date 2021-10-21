@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import './Navigation.css'
 
 export default class Navigation extends Component {
     render() {
@@ -7,8 +8,8 @@ export default class Navigation extends Component {
             <div className='nav-bar'>
                 <NavLink exact activeClassName="active" to="/">Home</NavLink>
                 {this.props.token && <NavLink exact activeClassName="active" to="/favorites">Favorite Parks</NavLink>}
-                <NavLink exact activeClassName="active" to="/login">Log In</NavLink>
-                <NavLink exact activeClassName="active" to="/sign-up">Sign Up</NavLink>
+                {!this.props.token && <NavLink exact activeClassName="active" to="/login">Log In</NavLink>}
+                {!this.props.token && <NavLink exact activeClassName="active" to="/sign-up">Sign Up</NavLink>}
                 <NavLink exact activeClassName="active" to="/aboutus">About Us</NavLink>
                 {this.props.token && <button onClick={this.props.logout}>Logout</button>}
             </div>

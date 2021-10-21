@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import Button from '@mui/material/Button';
+import './Favorites.css'
 
 
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+
+const URL = 'https://cryptic-dusk-44349.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class Favorites extends Component {
     state = {
@@ -15,7 +16,7 @@ export default class Favorites extends Component {
         const token = this.props.token
         const response = await request.get(`${URL}/api/favorites`).set('Authorization', token)
         this.setState({ favorites: response.body })
-        console.log(this.state.favorites)
+        
     }
 
 
@@ -23,6 +24,7 @@ export default class Favorites extends Component {
     render() {
         return (
             <div className='favorites-page'>
+                <h1>FAVORITE PARKS</h1>
                 {this.state.favorites.map(favs => 
                 <section key={favs.fullname} className='favorite'> 
                 <span>{favs.fullname}</span>
