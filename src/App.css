@@ -57,6 +57,7 @@ max-width: 15vw;
   align-items: center;
   color: gray;
   border-bottom: gray 1px solid;
+  margin-bottom: 2vw;
 }
 
 .nav-bar a:link, a:visited {
@@ -80,22 +81,27 @@ max-width: 15vw;
     align-items: center;
   }
 
+  .favorites-page h1 {
+    color: darkolivegreen;
+  }
+
   .favorite {
     width: 90%;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    padding:1vw;
+    padding:.5vw;
     border-radius: .5vw;
     margin: .3vw;
-    color: whitesmoke;
-    background-color: darkolivegreen;
+    color: dimgray;
+    background-color: rgb(242, 242, 242);
     font-weight: bold;
     justify-content: space-between;
+    border: darkolivegreen 1px solid;
   }
 
   .favorite:hover {
-    background-color: forestgreen;
+    background-color: rgb(224, 235, 224);
   }
 
   .favorite span:nth-child(1) {
@@ -109,7 +115,7 @@ max-width: 15vw;
   .favorite a {
     width: 30vw;
     text-decoration: none;
-    color: whitesmoke;
+    color: darkolivegreen;
   }
 
   .favorite button {

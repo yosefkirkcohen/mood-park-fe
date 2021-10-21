@@ -18,12 +18,14 @@ export default class Favorites extends Component {
     render() {
         return (
             <div className='favorites-page'>
+                <h1>FAVORITE PARKS</h1>
                 {this.state.favorites.map(favs => 
                 <section key={favs.fullname} className='favorite'> 
                 <span>{favs.fullname}</span>
                 <span>State: {favs.states}</span>
                 <a href={favs.url}> {favs.fullname} Website</a>
                 <button>Details</button>
+                <button>Remove</button>
                 </section>)}
                 {/* {this.state.favorites.map(favs => 
                 <div key={favs.fullname}> 
