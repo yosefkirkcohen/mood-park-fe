@@ -36,7 +36,7 @@ export default function BasicMenu() {
         onClick={handleClick}
         color = "inherit"
       >
-        Menu
+        MENU
       </Button>
       <Menu
         id="basic-menu"
@@ -52,7 +52,7 @@ export default function BasicMenu() {
         <MenuItem onClick={handleClose}><Link href = 'sign-up' underline = 'none'>Sign Up</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link href = 'login' underline = 'none'>Sign In</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link href = 'aboutus' underline = 'none'>About Us</Link></MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
       </Menu>
 
         </Toolbar>

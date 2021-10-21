@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { signUp } from './Utils.js';
 import { Link } from 'react-router-dom'
-
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -34,6 +33,7 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
+                
                 <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -89,7 +89,7 @@ export default class Signup extends Component {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="log-in" variant="body2">
+                <Link to="login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

@@ -2,11 +2,18 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+
+ 
 import { InputLabel } from '@material-ui/core';
 import './DetailPage.css'
 
+<<<<<<< HEAD
 // const URL = 'https://mood-park-be.herokuapp.com'
 const URL = 'http://localhost:7890'
+=======
+const URL = 'https://mood-park-be.herokuapp.com'
+//  const URL = 'http://localhost:7890'
+>>>>>>> 526400993edc14bdd4c6897467316272a51c6925
 
 export default class DetailPage extends Component {
 
