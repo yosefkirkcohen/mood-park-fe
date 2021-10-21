@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 import './Favorites.css'
+import { Button }  from '@mui/material';
 
 
 
-const URL = 'https://cryptic-dusk-44349.herokuapp.com'
-// const URL = 'http://localhost:7890'
+// const URL = 'https://cryptic-dusk-44349.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class Favorites extends Component {
     state = {
@@ -30,7 +31,8 @@ export default class Favorites extends Component {
                 <span>{favs.fullname}</span>
                 <span>State: {favs.states}</span>
                 <a href={favs.url}> {favs.fullname} Website</a>
-                <a href={`/park/${favs.parkcode}`}><button>Details</button></a>
+                <a href={`/park/${favs.parkcode}`}><Button color = "success">Details</Button></a>
+                <a href={`/park/${favs.parkcode}`}><Button color = "success">Remove</Button></a>
                 </section>)}
                 {/* {this.state.favorites.map(favs => 
                 <div key={favs.fullname}> 

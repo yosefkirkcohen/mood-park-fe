@@ -12,15 +12,16 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
-import { Button } from '@mui/material';
+import { Button }  from '@mui/material';
 import { TextField } from '@mui/material';
 import { removeFavorite } from './Utils.js';
+import ButtonGroup from '@mui/material/ButtonGroup';
 // import DetailPage from './DetailPage.js';
 
 import './HomePage.css'
 
-const URL = 'https://cryptic-dusk-44349.herokuapp.com'
-// const URL = 'http://localhost:7890'
+// const URL = 'https://cryptic-dusk-44349.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class HomePage extends Component {
 
@@ -107,9 +108,11 @@ export default class HomePage extends Component {
                     <p>Parks 4ME helps you decide which National Park you want to visit next! Save a list of your favorite National parks, leave comments about the parks you have been to, and view what other's have to say. Sign up for an account to start start your journey.</p>
                 </section>
                 <div>
-                    <button className='change-results' onClick={this.firstTwenty} disabled={this.state.start < 20}>First 20</button>
-                    <button className='change-results' onClick={this.previousTwenty} disabled={this.state.start < 20}>Previous 20</button>
-                    <button className='change-results' onClick={this.nextTwenty} disabled={this.state.parks.length < 20}>Next 20</button>
+                    <ButtonGroup style={{marginBottom: '10px'}}>
+                    <Button variant = 'contained' className='change-results' onClick={this.firstTwenty} disabled={this.state.start < 20}>First 20</Button>
+                    <Button variant = 'contained' className='change-results' onClick={this.previousTwenty} disabled={this.state.start < 20}>Previous 20</Button>
+                    <Button variant = 'contained' className='change-results' onClick={this.nextTwenty} disabled={this.state.parks.length < 20}>Next 20</Button>
+                    </ButtonGroup>
                     <form onSubmit={this.submitPark}>
                         <label>
                             <TextField id="outlined-basic" label="Search By Name" size='small' variant="outlined" type='text' required onChange={this.handleSearch} />
@@ -124,7 +127,7 @@ export default class HomePage extends Component {
                     alignItems="top"
                 >
                     {this.state.parks.map(park =>
-                        <Card style = {{display: 'flex', justifyContent: 'space-between', flexDirection: 'column', marginBottom: '10px' }} sx={{ maxWidth: 345 }}>
+                        <Card style = {{display: 'flex', justifyContent: 'space-between', flexDirection: 'column', marginBottom: '10px', marginTop: '10px' }} sx={{ maxWidth: 345 }}>
                             <CardActionArea href={`/park/${park.parkCode}`}>
                                 <CardMedia
                                     component="img"
