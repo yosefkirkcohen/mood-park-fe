@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import './Favorites.css'
 import { Button }  from '@mui/material';
-
+import { removeFavorite } from './Utils.js';
 
 
 // const URL = 'https://cryptic-dusk-44349.herokuapp.com'
@@ -11,6 +11,7 @@ const URL = 'http://localhost:7890'
 export default class Favorites extends Component {
     state = {
         favorites: []
+        
     }
 
     componentDidMount = async () => {
@@ -20,6 +21,13 @@ export default class Favorites extends Component {
         
     }
 
+    handleRemove = async (parkCode) => {
+        const token = this.props.token
+        await removeFavorite(parkCode, token)
+        const favs = await request.get(`${URL}/api/favorites`).set
+            ('Authorization', token)
+        this.setState({ favorites: favs.body })
+    }
 
     
     render() {
@@ -32,7 +40,7 @@ export default class Favorites extends Component {
                 <span>State: {favs.states}</span>
                 <a href={favs.url}> {favs.fullname} Website</a>
                 <a href={`/park/${favs.parkcode}`}><Button color = "success">Details</Button></a>
-                <a href={`/park/${favs.parkcode}`}><Button color = "success">Remove</Button></a>
+                <Button onClick = {() => this.handleRemove(favs.parkcode)} color = "success">Remove</Button>
                 </section>)}
                 {/* {this.state.favorites.map(favs => 
                 <div key={favs.fullname}> 
