@@ -104,7 +104,7 @@ export default class DetailPage extends Component {
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
                         <TextField fullWidth = {true}  multiline={true} rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
                         <Button variant="contained" type='submit'>Post</Button>
-                    </form>
+                    </form> }
                 </div>
                 <section>
                     <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
