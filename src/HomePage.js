@@ -18,7 +18,6 @@ import { removeFavorite } from './Utils.js';
 // import DetailPage from './DetailPage.js';
 
 
-
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
 

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export default class Navigation extends Component {
     render() {
         return (
-            <div>
+            <div className='nav-bar'>
                 <NavLink exact activeClassName="active" to="/">Home</NavLink>
                 {this.props.token && <NavLink exact activeClassName="active" to="/favorites">Favorite Parks</NavLink>}
                 <NavLink exact activeClassName="active" to="/login">Log In</NavLink>
