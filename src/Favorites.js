@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import { Redirect } from 'react-router'
+
 
 
 const URL = 'https://mood-park-be.herokuapp.com'
