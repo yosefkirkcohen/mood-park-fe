@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
  
 import { InputLabel } from '@material-ui/core';
 
-const URL = 'https://mood-park-be.herokuapp.com'
-//  const URL = 'http://localhost:7890'
+// const URL = 'https://mood-park-be.herokuapp.com'
+ const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -94,7 +94,7 @@ export default class DetailPage extends Component {
                 <div>
                     <form onSubmit={this.handleCommentSubmit}>
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
-                        <TextField fullWidth='true' multiline='true' rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
+                        <TextField fullWidth = {true}  multiline={true} rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
                         <Button variant="contained" type='submit'>Post</Button>
                     </form>
                 </div>
