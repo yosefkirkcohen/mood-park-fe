@@ -36,10 +36,7 @@ export default class App extends Component {
     logout = () => {
         localStorage.clear()
         this.setState({ token: ''});
-        // this.props.history.push('/')
-        //<Redirect to="/" />
       }
-
 
     render() {
         return (

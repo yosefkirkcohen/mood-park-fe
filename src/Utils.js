@@ -15,17 +15,21 @@ export async function login(email, password) {
     }
 }
 
-//signup: 
 export async function signUp(email, password) {
-    const response = await request
+    try {const response = await request
     .post(`${URL}/auth/signup`)
     .send ({email, password})
     
     return response.body;
+    }
+    catch(e) {
+        console.log(e);
+        alert('Email address associated with existing account');
+        return null;
+    }
 }
 
 export function isFavorite(park, favorites) {
-
 return !!favorites.find( favorite => {
     return favorite.parkcode === park.parkCode
 })
