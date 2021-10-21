@@ -22,7 +22,9 @@ export default class DetailPage extends Component {
         },
         comment: '',
         comments: [],
-        userId: ''
+        userId: '',
+        editing: false,
+        commentId: ''
     }
 
     componentDidMount = async () => {
@@ -61,11 +63,15 @@ export default class DetailPage extends Component {
     }
 
     handlePostEdit = async (commentId) => {
-        const token = this.props.token;
+        const comment = this.state.comments.find(comment => commentId === comment.id)
+        this.setState({comment: comment.comment, editing: true, commentId: commentId})
 
         
+    }
 
-        await request.put(`${URL}/api/comments/${commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
+    handleEditSubmit = async () => {
+        const token = this.props.token;
+        await request.put(`${URL}/api/comments/${this.state.commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
 
         this.componentDidMount()
     }
@@ -94,10 +100,11 @@ export default class DetailPage extends Component {
                 Hours: {this.state.park.operatingHours[0].standardHours.monday}
                 <br /> <br />
                 <div>
-                    {this.props.token && <form onSubmit={this.handleCommentSubmit}>
+                    {this.props.token && <form onSubmit={this.state.editing ? this.handleEditSubmit :this.handleCommentSubmit}>
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
                         <TextField fullWidth='true' multiline='true' rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
-                        <Button variant="contained" type='submit'>Post</Button>
+                        {this.state.editing ? <Button variant="contained" type='submit'>Edit</Button>
+                        : <Button variant="contained" type='submit'>Post</Button>}
                     </form>}
                 </div>
                 <section>
