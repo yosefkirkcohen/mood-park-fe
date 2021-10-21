@@ -34,9 +34,9 @@ export default class DetailPage extends Component {
             const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
             this.setState({ comments: comments.body })
             console.log(this.state.comments)
-        
-        const userId = await request.get(URL + '/api/user').set('Authorization', token);
-        this.setState({userId: userId.body.id})
+
+            const userId = await request.get(URL + '/api/user').set('Authorization', token);
+            this.setState({ userId: userId.body.id })
         }
     }
 
@@ -54,7 +54,7 @@ export default class DetailPage extends Component {
         this.componentDidMount()
     }
 
-    handlePostEdit = async(commentId) => {
+    handlePostEdit = async (commentId) => {
         const token = this.props.token;
         await request.put(`${URL}/api/comments/${commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
 
@@ -62,10 +62,11 @@ export default class DetailPage extends Component {
     }
 
     render() {
+        console.log(this.state.park)
         return (
             <div>
                 <button onClick={this.handleFavorite}> Add to Favorites </button>
-                <br/>
+                <br />
                 {this.state.park.name} <br />
                 {this.state.park.states} <br />
                 {this.state.park.url} <br />
@@ -79,7 +80,7 @@ export default class DetailPage extends Component {
                 <br />
                 Park Fee: ${this.state.park.entranceFees[0].cost} <br />
                 Hours: {this.state.park.operatingHours[0].standardHours.monday}
-                <br/> <br/>
+                <br /> <br />
 
 
                 {/* <form onSubmit={this.handleCommentSubmit}>
@@ -97,15 +98,13 @@ export default class DetailPage extends Component {
                     <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
                     {this.state.comments.map(comment => {
                         return <div className='comments'>
-                        {comment.comment} <br/>
+                            {comment.comment} <br />
 
-                        {console.log(comment)}
-                        
-                         <div className='user'>User {comment.owner_id} </div>
-                         { comment.owner_id === this.state.userId 
-                         &&
-                         <button onClick={() => this.handlePostEdit(comment.id)}>Edit post</button>
-                         }
+                            <div className='user'>User {comment.owner_id} </div>
+                            {comment.owner_id === this.state.userId
+                                &&
+                                <button onClick={() => this.handlePostEdit(comment.id)}>Edit post</button>
+                            }
                         </div>
                     })}
                 </section>

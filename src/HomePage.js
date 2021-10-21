@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 // import { Link } from 'react-router-dom'
-// import { isFavorite } from './Utils.js'
+import { isFavorite } from './Utils.js'
 
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -14,11 +14,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
 import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
+import { removeFavorite } from './Utils.js';
 // import DetailPage from './DetailPage.js';
 
 
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+
+const URL = 'https://mood-park-be.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class HomePage extends Component {
 
@@ -26,6 +28,8 @@ export default class HomePage extends Component {
         parks: [],
         SearchPark: '',
         favorites: [],
+        parkCode: '',
+
         start: 0,
         isLoading: false
     }
@@ -40,30 +44,50 @@ export default class HomePage extends Component {
         this.setState({ SearchPark: e.target.value })
     }
 
+    handleRemove = async (parkCode) => {
+        const token = this.props.token
+        await removeFavorite(parkCode, token)
+        const favs = await request.get(`${URL}/api/favorites`).set
+            ('Authorization', token)
+        this.setState({ favorites: favs.body })
+    }
+
+    handleFavorite = async (park) => {
+
+        const token = this.props.token
+        await request.post(`${URL}/api/favorites`).send(park).set('Authorization', token)
+        const favs = await request.get(`${URL}/api/favorites`).set
+            ('Authorization', token)
+        this.setState({ favorites: favs.body })
+        console.log(favs.body)
+    }
+
+
+
     componentDidMount = async () => {
-        this.setState({isLoading: true})
+        this.setState({ isLoading: true })
         const token = this.props.token
         const response = await request.get(`${URL}/parks?start=${this.state.start}`)
         if (token) {
             const favs = await request.get(`${URL}/api/favorites`).set
                 ('Authorization', token)
             this.setState({ favorites: favs.body })
-            }
+        }
         this.setState({ parks: response.body.data, isLoading: false })
     }
 
     nextTwenty = async () => {
-        await this.setState({start: this.state.start + 20})
+        await this.setState({ start: this.state.start + 20 })
         this.componentDidMount()
     }
-    
+
     previousTwenty = async () => {
-        await this.setState({start: this.state.start - 20})
+        await this.setState({ start: this.state.start - 20 })
         this.componentDidMount()
     }
 
     firstTwenty = async () => {
-        await this.setState({start: this.state.start = 0})
+        await this.setState({ start: this.state.start = 0 })
         this.componentDidMount()
     }
 
@@ -80,8 +104,8 @@ export default class HomePage extends Component {
                     <p>Parks 4ME helps you figure out the next national treasure you want to visit. Save a list of your favorite National parks, leave comments about the parks you have been to, and view what other's have to say. Sign up for an account to start start your journey.</p>
                 </section>
                 <div>
-                    <button className='change-results' onClick={this.firstTwenty} disabled={this.state.start < 20 }>Beginning of Results</button>
-                    <button className='change-results' onClick={this.previousTwenty} disabled={this.state.start < 20 }>Previous 20 Results</button>
+                    <button className='change-results' onClick={this.firstTwenty} disabled={this.state.start < 20}>Beginning of Results</button>
+                    <button className='change-results' onClick={this.previousTwenty} disabled={this.state.start < 20}>Previous 20 Results</button>
                     <button className='change-results' onClick={this.nextTwenty} disabled={this.state.parks.length < 20}>Next 20 Results</button>
                     <form onSubmit={this.submitPark}>
                         <label>
@@ -115,9 +139,15 @@ export default class HomePage extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <IconButton size='large' color="error" aria-label="add to favorites">
-                                    <FavoriteIcon />
-                                </IconButton>
+                                {
+                                    isFavorite(park, this.state.favorites)
+                                        ? <IconButton size='large' color='error' aria-label="add to favorites" onClick={() => this.handleRemove(park.parkCode)}>
+                                            <FavoriteIcon />
+                                        </IconButton>
+                                        : <IconButton size='large' aria-label="add to favorites" onClick={() => this.handleFavorite(park)}>
+                                            <FavoriteIcon />
+                                        </IconButton>
+                                }
                             </CardActions>
                         </Card>
                     )}
