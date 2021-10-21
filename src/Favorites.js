@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 
 
+
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
 
@@ -14,7 +15,10 @@ export default class Favorites extends Component {
         const token = this.props.token
         const response = await request.get(`${URL}/api/favorites`).set('Authorization', token)
         this.setState({ favorites: response.body })
+        console.log(this.state.favorites)
     }
+
+
     
     render() {
         return (
@@ -24,7 +28,7 @@ export default class Favorites extends Component {
                 <span>{favs.fullname}</span>
                 <span>State: {favs.states}</span>
                 <a href={favs.url}> {favs.fullname} Website</a>
-                <button>Details</button>
+                <a href={`/park/${favs.parkcode}`}><button >Details</button></a>
                 </section>)}
                 {/* {this.state.favorites.map(favs => 
                 <div key={favs.fullname}> 
