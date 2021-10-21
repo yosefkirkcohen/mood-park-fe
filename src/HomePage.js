@@ -17,15 +17,16 @@ import { TextField } from '@mui/material';
 // import DetailPage from './DetailPage.js';
 
 
-const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+// const URL = 'https://mood-park-be.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class HomePage extends Component {
 
     state = {
         parks: [],
         SearchPark: '',
-        favorites: []
+        favorites: [],
+        start: 0
     }
 
     submitPark = async (e) => {
@@ -41,7 +42,7 @@ export default class HomePage extends Component {
 
     componentDidMount = async () => {
         const token = this.props.token
-        const response = await request.get(URL + '/parks')
+        const response = await request.get(`${URL}/parks?start=${this.state.start}`)
         if (token) {
             const favs = await request.get(`${URL}/api/favorites`).set
                 ('Authorization', token)
