@@ -17,8 +17,8 @@ import { TextField } from '@mui/material';
 // import DetailPage from './DetailPage.js';
 
 
-const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+// const URL = 'https://mood-park-be.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class HomePage extends Component {
 

@@ -18,7 +18,7 @@ export default class Favorites extends Component {
     render() {
         return (
             <div>
-                {this.state.favorites.map(favs => <div> <h1>{favs.fullname}</h1>
+                {this.state.favorites.map(favs => <div key={favs.fullname}> <h1>{favs.fullname}</h1>
                     <p> {favs.description}</p>
                     <img src={favs.images} alt={favs.fullname} />
                     <br />
