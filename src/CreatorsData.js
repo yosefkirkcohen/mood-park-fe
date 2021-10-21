@@ -17,11 +17,11 @@ export const creators = [
     },
     {
     id: 3,
-    name: 'Yoseph',
-    image: '',
-    title: '',
-    bio: '',
-    park: ''
+    name: 'Yosi Cohen',
+    image: 'self-portrait.png',
+    title: 'Web Developer',
+    bio: 'Likes to take long walks in the park, on the beach.',
+    park: 'I grew up in Santa Cruz, California, which is close to Yosemite. It gets too many visitors, but it really is beautiful.'
     },
     {
     id: 4,
