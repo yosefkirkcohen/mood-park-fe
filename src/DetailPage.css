@@ -1,0 +1,4 @@
+.detail-page {
+    display: grid;
+    grid-template-columns: 5vw 1fr;
+}

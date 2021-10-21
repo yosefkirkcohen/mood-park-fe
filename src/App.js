@@ -92,7 +92,7 @@ export default class App extends Component {
                             exact
                             render={(routerProps) => <Menu {...routerProps} />} 
                         />
-                        />
+                        
                         <Route 
                             path="/Menu2" 
                             exact

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import './Favorites.css'
 
 
 
@@ -23,6 +24,7 @@ export default class Favorites extends Component {
     render() {
         return (
             <div className='favorites-page'>
+                <h1>FAVORITE PARKS</h1>
                 {this.state.favorites.map(favs => 
                 <section key={favs.fullname} className='favorite'> 
                 <span>{favs.fullname}</span>
