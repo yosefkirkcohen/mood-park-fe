@@ -7,8 +7,8 @@ import Button from '@mui/material/Button';
 import { InputLabel } from '@material-ui/core';
 import './DetailPage.css'
 
-// const URL = 'https://mood-park-be.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://cryptic-dusk-44349.herokuapp.com'
+//  const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -36,9 +36,10 @@ export default class DetailPage extends Component {
         if (token) {
             const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
             this.setState({ comments: comments.body })
-            console.log(this.state.comments)
+            console.log(comments.body)
 
             const userId = await request.get(URL + '/api/user').set('Authorization', token);
+            console.log(userId)
             this.setState({ userId: userId.body.id })
         }
     }
@@ -52,6 +53,7 @@ export default class DetailPage extends Component {
     handleCommentSubmit = async (e) => {
         e.preventDefault();
         const token = this.props.token;
+        
         await request.post(`${URL}/api/comments`).send({ comment: this.state.comment, parkcode: this.state.parkCode }).set('Authorization', token)
 
         this.componentDidMount()
@@ -59,13 +61,16 @@ export default class DetailPage extends Component {
 
     handlePostEdit = async (commentId) => {
         const token = this.props.token;
+
+        
+
         await request.put(`${URL}/api/comments/${commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
 
         this.componentDidMount()
     }
 
     render() {
-        console.log(this.state.park)
+        console.log(this.state)
         return (
             <div className='detail-page'>
             <button onClick={this.handleFavorite}> Add to Favorites </button>
@@ -99,6 +104,7 @@ export default class DetailPage extends Component {
                     {this.state.comments.map(comment => {
                         return <div className='comments'>
                             {comment.comment} <br />
+                            {comment.timestamp}
 
                             <div className='user'>User {comment.owner_id} </div>
                             {comment.owner_id === this.state.userId
