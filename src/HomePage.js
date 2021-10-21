@@ -20,8 +20,8 @@ import { removeFavorite } from './Utils.js';
 import './HomePage.css'
 
 
-const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+// const URL = 'https://mood-park-be.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class HomePage extends Component {
 
@@ -105,9 +105,9 @@ export default class HomePage extends Component {
                     <p>Parks 4ME helps you decide which National Park you want to visit next! Save a list of your favorite National parks, leave comments about the parks you have been to, and view what other's have to say. Sign up for an account to start start your journey.</p>
                 </section>
                 <div>
-                    <button className='change-results' onClick={this.firstTwenty} disabled={this.state.start < 20}>start</button>
-                    <button className='change-results' onClick={this.previousTwenty} disabled={this.state.start < 20}>Previous 20 Parks</button>
-                    <button className='change-results' onClick={this.nextTwenty} disabled={this.state.parks.length < 20}>Next 20 Parks</button>
+                    <button className='change-results' onClick={this.firstTwenty} disabled={this.state.start < 20}>First 20</button>
+                    <button className='change-results' onClick={this.previousTwenty} disabled={this.state.start < 20}>Previous 20</button>
+                    <button className='change-results' onClick={this.nextTwenty} disabled={this.state.parks.length < 20}>Next 20</button>
                     <form onSubmit={this.submitPark}>
                         <label>
                             <TextField id="outlined-basic" label="Search By Name" size='small' variant="outlined" type='text' required onChange={this.handleSearch} />

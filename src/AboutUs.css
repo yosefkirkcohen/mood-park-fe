@@ -1,0 +1,37 @@
+/* bios styling */
+
+.bios-page {
+    display: flex;
+    flex-direction: column;
+    background-image: url('./images/hidden-lake.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+  }
+  
+  .bios-page h1 {
+    color: whitesmoke;
+    align-self: center;
+  }
+  
+  .bios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  .bios span {
+  background-color: whitesmoke;
+  margin: 3vw;
+  padding: 1vw;
+  border-radius: .5vw;
+  color: grey;
+  max-width: 20vw;
+  min-width: 15vw;
+  font-size: 1.1vw;
+  }
+  
+  .bios span p:nth-child(1) {
+  color: green;
+  }

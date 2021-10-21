@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { creators } from './CreatorsData.js'
+import './AboutUs.css'
 
 export default class AboutUs extends Component {
     render() {
