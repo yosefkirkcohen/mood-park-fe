@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Menu from './Menu.js'
  
 
 const URL = 'https://mood-park-be.herokuapp.com'
@@ -53,6 +54,8 @@ export default class DetailPage extends Component {
 
     render() {
         return (
+            <React.Fragment>
+                <Menu />
             <div>
                 {this.state.park.name} <br />
                 {this.state.park.states} <br />
@@ -99,6 +102,7 @@ export default class DetailPage extends Component {
                 
             </div>
 
+            </React.Fragment>
         )
     }
 }

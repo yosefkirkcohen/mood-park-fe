@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import Menu from './Menu.js'
 const URL = 'https://mood-park-be.herokuapp.com'
 // const URL = 'http://localhost:7890'
 export default class Favorites extends Component {
@@ -16,6 +17,8 @@ export default class Favorites extends Component {
     }
     render() {
         return (
+        <React.Fragment>
+            <Menu />
             <div>
                 {this.state.favorites.map(favs => <div> <h1>{favs.fullname}</h1>
                     <p> {favs.description}</p>
@@ -26,6 +29,7 @@ export default class Favorites extends Component {
                     State: {favs.states}
                 </div>)}
             </div>
+        </React.Fragment>
         )
     }
 }

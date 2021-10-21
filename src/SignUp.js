@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { signUp } from './Utils.js';
 import { Link } from 'react-router-dom'
-
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,7 +10,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import Menu from './Menu.js'
 
 export default class Signup extends Component {
 
@@ -33,6 +32,8 @@ export default class Signup extends Component {
     render() {
         return (
             <div>
+                <Menu />
+
                 {/* <section>
                     <h4> Sign up </h4>
                 <form onSubmit={this.handleSubmit }>
@@ -110,7 +111,7 @@ export default class Signup extends Component {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="log-in" variant="body2">
+                <Link to="login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

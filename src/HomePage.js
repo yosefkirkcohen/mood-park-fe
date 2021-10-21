@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Grid } from '@mui/material';
+import Menu from './Menu.js'
 // import DetailPage from './DetailPage.js';
 
 
@@ -50,7 +51,10 @@ export default class HomePage extends Component {
         
     }
     render() {
+        
         return (
+        <React.Fragment>
+        <Menu />
             <Grid
             container
             direction="column"
@@ -108,9 +112,12 @@ export default class HomePage extends Component {
 </Card>            
                 
  ) }
- </Grid>
+ </Grid> 
             </Grid>
+ </React.Fragment>           
 )        
     
 }
+
 }
+    

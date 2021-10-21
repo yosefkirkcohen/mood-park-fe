@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { creators } from './CreatorsData.js'
-
+import Menu from './Menu.js'
 export default class AboutUs extends Component {
     render() {
         return (
+            <React.Fragment>
+                <Menu />
             <section className='bios'>
                 {creators.map(creator => 
                     <span key={creator.name}>
@@ -14,6 +16,7 @@ export default class AboutUs extends Component {
                 )
                 }
             </section>
+            </React.Fragment>
         )
     }
 }

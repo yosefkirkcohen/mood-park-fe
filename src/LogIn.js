@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Menu from './Menu.js'
 
 
 
@@ -36,6 +37,7 @@ handleSubmit = async e => {
 render() {
     return (
         <div>
+            <Menu />
             {/* <section>
                 <h4> Sign In </h4>
             <form onSubmit={this.handleSubmit }>
@@ -120,7 +122,7 @@ render() {
               <Grid item xs>
               </Grid>
               <Grid item>
-                <Link href="sign-up" variant="body2">
+                <Link to='/sign-up' variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
