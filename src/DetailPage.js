@@ -5,9 +5,10 @@ import Button from '@mui/material/Button';
 
  
 import { InputLabel } from '@material-ui/core';
+import './DetailPage.css'
 
-const URL = 'https://mood-park-be.herokuapp.com'
-//  const URL = 'http://localhost:7890'
+// const URL = 'https://mood-park-be.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -66,18 +67,19 @@ export default class DetailPage extends Component {
     render() {
         console.log(this.state.park)
         return (
-            <React.Fragment>
-                
-            <div>
-                <button onClick={this.handleFavorite}> Add to Favorites </button>
-                <br />
-                {this.state.park.name} <br />
+            <div className='detail-page'>
+            <button onClick={this.handleFavorite}> Add to Favorites </button>
+            <section className='park-detail'>
+                <h1>{this.state.park.name}</h1>
+                <div></div>
+                <div></div>
+
                 {this.state.park.states} <br />
                 {this.state.park.url} <br />
 
                 <img src={this.state.park.images[0].url} alt='ok' />
                 <br />
-                {this.state.park.description} <br /> <br />
+                {this.state.park.description}
                 Activities:
 
                 {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
@@ -85,12 +87,6 @@ export default class DetailPage extends Component {
                 Park Fee: ${this.state.park.entranceFees[0].cost} <br />
                 Hours: {this.state.park.operatingHours[0].standardHours.monday}
                 <br /> <br />
-
-
-                {/* <form onSubmit={this.handleCommentSubmit}>
-                    <input value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
-                    <button>Post</button>
-                </form> */}
                 <div>
                     <form onSubmit={this.handleCommentSubmit}>
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
@@ -112,9 +108,8 @@ export default class DetailPage extends Component {
                         </div>
                     })}
                 </section>
+                </section>
             </div>
-
-            </React.Fragment>
         )
     }
 }

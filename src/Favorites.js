@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import './Favorites.css'
 
-
-
-const URL = 'https://mood-park-be.herokuapp.com'
-// const URL = 'http://localhost:7890'
+// const URL = 'https://mood-park-be.herokuapp.com'
+const URL = 'http://localhost:7890'
 
 export default class Favorites extends Component {
     state = {
@@ -23,6 +22,7 @@ export default class Favorites extends Component {
     render() {
         return (
             <div className='favorites-page'>
+                <h1>FAVORITE PARKS</h1>
                 {this.state.favorites.map(favs => 
                 <section key={favs.fullname} className='favorite'> 
                 <span>{favs.fullname}</span>
