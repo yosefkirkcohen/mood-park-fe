@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
- 
+import { InputLabel } from '@material-ui/core';
+
 
 // const URL = 'https://mood-park-be.herokuapp.com'
 const URL = 'http://localhost:7890'
@@ -19,21 +20,25 @@ export default class DetailPage extends Component {
             operatingHours: [{ standardHours: { monday: '' } }]
         },
         comment: '',
-        comments: []
+        comments: [],
+        userId: ''
     }
 
     componentDidMount = async () => {
 
         const parkCode = this.props.match.params._parkCode
         const response = await request.get(URL + `/parkDetail/${parkCode}`);
-        
+
         this.setState({ park: response.body.data[0], parkCode: parkCode })
 
         const token = this.props.token
         if (token) {
-        const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
-            this.setState({comments: comments.body})
+            const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
+            this.setState({ comments: comments.body })
             console.log(this.state.comments)
+        
+        const userId = await request.get(URL + '/api/user').set('Authorization', token);
+        this.setState({userId: userId.body.id})
         }
     }
 
@@ -46,7 +51,14 @@ export default class DetailPage extends Component {
     handleCommentSubmit = async (e) => {
         e.preventDefault();
         const token = this.props.token;
-         await request.post(`${URL}/api/comments`).send({comment: this.state.comment, parkcode: this.state.parkCode}).set('Authorization', token)
+        await request.post(`${URL}/api/comments`).send({ comment: this.state.comment, parkcode: this.state.parkCode }).set('Authorization', token)
+
+        this.componentDidMount()
+    }
+
+    handlePostEdit = async(commentId) => {
+        const token = this.props.token;
+        await request.put(`${URL}/api/comments/${commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
 
         this.componentDidMount()
     }
@@ -64,37 +76,41 @@ export default class DetailPage extends Component {
                 <br />
                 {this.state.park.description} <br /> <br />
                 Activities:
-                
+
                 {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
                 <br />
-                Cost: ${this.state.park.entranceFees[0].cost} <br />
+                Park Fee: ${this.state.park.entranceFees[0].cost} <br />
                 Hours: {this.state.park.operatingHours[0].standardHours.monday}
-                <br/>
+                <br/> <br/>
 
-                
-                <form onSubmit={this.handleCommentSubmit}>
-                    <label>
-                        Post a comment here
-                    </label>
-                    <input value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
+
+                {/* <form onSubmit={this.handleCommentSubmit}>
+                    <input value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
                     <button>Post</button>
-                </form>
-
+                </form> */}
+                <div>
+                    <form onSubmit={this.handleCommentSubmit}>
+                        <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
+                        <TextField fullWidth='true' multiline='true' rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
+                        <Button variant="contained" type='submit'>Post</Button>
+                    </form>
+                </div>
                 <section>
+                    <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
                     {this.state.comments.map(comment => {
                         return <div className='comments'>
                         {comment.comment} <br/>
+
+                        {console.log(comment)}
+                        
                          <div className='user'>User {comment.owner_id} </div>
+                         { comment.owner_id === this.state.userId 
+                         &&
+                         <button onClick={() => this.handlePostEdit(comment.id)}>Edit post</button>
+                         }
                         </div>
-                        })}
+                    })}
                 </section>
-
-
-               
-                
-                    <TextField fullWidth = 'true' multiline = 'true' rows = {4} label="Comment" id="Comment" variant="outlined" />
-                    <Button variant="contained" type = 'submit'>Submit</Button>
-                
             </div>
 
         )
