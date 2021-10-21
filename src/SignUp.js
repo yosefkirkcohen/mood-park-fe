@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 
+
 export default class Signup extends Component {
 
     state = {
@@ -22,11 +23,17 @@ export default class Signup extends Component {
     handleSubmit = async e => {
         e.preventDefault();
 
-        const token = await signUp(this.state.email, this.state.password);
-        if (token !== null) { 
+        const {token, id} = await signUp(this.state.email, this.state.password);
+        if (token) { 
         this.props.tokenToLocalStorage(token);
+        localStorage.setItem('USER_ID', id)
         this.props.history.push('/')}
-        else { this.setState({email:'', password:''}) }
+        else { this.setState({email:'', password:''})
+        this.props.history.push('/login')
+      }
+
+        
+        
     }
    
 

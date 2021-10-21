@@ -22,7 +22,9 @@ export default class DetailPage extends Component {
         },
         comment: '',
         comments: [],
-        userId: ''
+        userId: '',
+        editing: false,
+        commentId: ''
     }
 
     componentDidMount = async () => {
@@ -38,9 +40,10 @@ export default class DetailPage extends Component {
             this.setState({ comments: comments.body })
             console.log(comments.body)
 
-            const userId = await request.get(URL + '/api/user').set('Authorization', token);
-            console.log(userId)
-            this.setState({ userId: userId.body.id })
+            // const userId = await request.get(URL + '/api/user').set('Authorization', token);
+            // console.log(userId)
+            const userID = localStorage.getItem('USER_ID')
+            this.setState({ userId: userID})
         }
     }
 
@@ -60,11 +63,15 @@ export default class DetailPage extends Component {
     }
 
     handlePostEdit = async (commentId) => {
-        const token = this.props.token;
+        const comment = this.state.comments.find(comment => commentId === comment.id)
+        this.setState({comment: comment.comment, editing: true, commentId: commentId})
 
         
+    }
 
-        await request.put(`${URL}/api/comments/${commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
+    handleEditSubmit = async () => {
+        const token = this.props.token;
+        await request.put(`${URL}/api/comments/${this.state.commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
 
         this.componentDidMount()
     }
@@ -98,21 +105,23 @@ export default class DetailPage extends Component {
                 {/* <img src={this.state.park.images[0].url} alt='ok' /> */}
                 </section>
                 <div>
-                    <form onSubmit={this.handleCommentSubmit}>
+                    {this.props.token && <form onSubmit={this.state.editing ? this.handleEditSubmit :this.handleCommentSubmit}>
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
                         <TextField fullWidth='true' multiline='true' rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
-                        <Button variant="contained" type='submit'>Post</Button>
-                    </form>
+                        {this.state.editing ? <Button variant="contained" type='submit'>Edit</Button>
+                        : <Button variant="contained" type='submit'>Post</Button>}
+                    </form>}
                 </div>
                 <section>
                     <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
-                    {this.state.comments.map(comment => {
+                    {this.state.comments.sort((a,b) => b.park_timestamp-a.park_timestamp).map(comment => {
                         return <div className='comments'>
                             {comment.comment} <br />
-                            {comment.timestamp}
+                            {new Date(Number(comment.park_timestamp)).toLocaleDateString()}
 
                             <div className='user'>User {comment.owner_id} </div>
-                            {comment.owner_id === this.state.userId
+                            {console.log(comment.owner_id, this.state.userId)}
+                            {comment.owner_id === Number(this.state.userId)
                                 &&
                                 <button onClick={() => this.handlePostEdit(comment.id)}>Edit post</button>
                             }

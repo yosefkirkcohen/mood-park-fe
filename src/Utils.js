@@ -1,7 +1,7 @@
 import request from 'superagent';
 
-const URL = 'https://cryptic-dusk-44349.herokuapp.com';
-// const URL = 'http://localhost:7890'
+// const URL = 'https://cryptic-dusk-44349.herokuapp.com';
+const URL = 'http://localhost:7890'
 
 export async function login(email, password) {
     try {
@@ -23,7 +23,7 @@ export async function signUp(email, password) {
             .post(`${URL}/auth/signup`)
             .send({ email, password })
 
-        return response.body.token;
+        return response.body;
     }
     catch (e) {
         console.log(e);
@@ -31,6 +31,21 @@ export async function signUp(email, password) {
         return null;
     }
 }
+
+// export async function getUserId(email, password) {
+//     try {
+//         const response = await request
+//             .post(`${URL}/auth/signup`)
+//             .send({ email, password })
+
+//         return response.body.id;
+//     }
+//     catch (e) {
+//         console.log(e);
+//         alert('Email address associated with existing account');
+//         return null;
+//     }
+// }
 
 export function isFavorite(park, favorites) {
 
