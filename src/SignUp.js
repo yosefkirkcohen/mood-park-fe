@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getUserId, signUp } from './Utils.js';
+import { signUp } from './Utils.js';
 import { Link } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
