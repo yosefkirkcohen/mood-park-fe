@@ -60,10 +60,7 @@ export default class HomePage extends Component {
         const favs = await request.get(`${URL}/api/favorites`).set
             ('Authorization', token)
         this.setState({ favorites: favs.body })
-        console.log(favs.body)
     }
-
-
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
@@ -111,7 +108,7 @@ export default class HomePage extends Component {
                         <br />
                         See details about each park, and reviews that others have shared.
                         <br />
-                        Sign up for an account to bookmark your favorite National Parks and share your park reviews with others.
+                        <b>Sign up for an account to bookmark your favorite National Parks and share your park reviews with others.</b>
                     </p>
                 </section>
                 <div>
