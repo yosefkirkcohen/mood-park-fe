@@ -60,10 +60,7 @@ export default class HomePage extends Component {
         const favs = await request.get(`${URL}/api/favorites`).set
             ('Authorization', token)
         this.setState({ favorites: favs.body })
-        console.log(favs.body)
     }
-
-
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
@@ -105,7 +102,14 @@ export default class HomePage extends Component {
             >
                 <section className='home-page-head'>
                     <h1>Parks 4ME</h1>
-                    <p>Parks 4ME helps you decide which National Park you want to visit next! Save a list of your favorite National parks, leave comments about the parks you have been to, and view what other's have to say. Sign up for an account to start start your journey.</p>
+                    <p>Parks 4ME helps you plan your next National Park adventure.
+                        <br />
+                        Browse through the comprehensive list of parks and historical sites. 
+                        <br />
+                        See details about each park, and reviews that others have shared.
+                        <br />
+                        <b>Sign up for an account to bookmark your favorite National Parks and share your park reviews with others.</b>
+                    </p>
                 </section>
                 <div>
                     <ButtonGroup style={{marginBottom: '10px'}}>

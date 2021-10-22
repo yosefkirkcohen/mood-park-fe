@@ -29,7 +29,7 @@ export default class DetailPage extends Component {
 
     componentDidMount = async () => {
 
-        const parkCode = this.props.match.params._parkCode
+        const parkCode = this.props.match.params.parkCode
         const response = await request.get(URL + `/parkDetail/${parkCode}`);
 
         this.setState({ park: response.body.data[0], parkCode: parkCode })
@@ -88,7 +88,7 @@ export default class DetailPage extends Component {
                 {/* park title and add fav button */}
                 <div className='detail-head'>
                     <h1>{this.state.park.name}</h1>
-                    {this.props.token &&<button onClick={this.handleFavorite}>Favorite</button>}
+                    {/* {this.props.token &&<button onClick={this.handleFavorite}>Favorite</button>} */}
                 </div>
 
                 {/* park details */}
@@ -97,15 +97,15 @@ export default class DetailPage extends Component {
                         <div>{this.state.park.description}</div>
                     </section>
                     <section>
-                        <div>Activities:{this.state.park.activities.map(activity => 
+                        <div><b>Activities:</b>{this.state.park.activities.map(activity => 
                             <div>{activity.name}</div>)}
                         </div>
                     </section>
                     <section>
-                        <div>State(s):{this.state.park.states}</div>
-                        <div>Hours: {this.state.park.operatingHours[0].standardHours.monday}</div>
-                        <div>Park Fee: ${this.state.park.entranceFees[0].cost}</div>
-                        <div>Website: {this.state.park.url}</div>
+                        <div><b>State:</b> {this.state.park.states}</div>
+                        <div><b>Hours:</b> {this.state.park.operatingHours[0].standardHours.monday}</div>
+                        <div><b>Park Fee:</b> ${this.state.park.entranceFees[0].cost}</div>
+                        <div><a href={this.state.park.url}>{this.state.park.url}</a></div>
                     </section>
                 </section>
 
