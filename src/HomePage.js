@@ -142,7 +142,7 @@ export default class HomePage extends Component {
                                 </CardContent>
                                 {/* <div style = {{height: 100}}></div> */}
                             </CardActionArea>
-                            <CardActions>
+                           { this.props.token && <CardActions>
                                 {
                                     isFavorite(park, this.state.favorites)
                                         ? <IconButton size='large' color='error' aria-label="add to favorites" onClick={() => this.handleRemove(park.parkCode)}>
@@ -152,7 +152,7 @@ export default class HomePage extends Component {
                                             <FavoriteIcon />
                                         </IconButton>
                                 }
-                            </CardActions>
+                            </CardActions> }
                         </Card>
                     )}
                 </Grid>

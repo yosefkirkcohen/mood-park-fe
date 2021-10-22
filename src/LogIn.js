@@ -22,10 +22,11 @@ export default class Signin extends Component {
 handleSubmit = async e => {
     e.preventDefault();
     
-    const {token, id} = await login(this.state.email, this.state.password); 
-    if (token) {
-    this.props.tokenToLocalStorage(token);
-    localStorage.setItem('USER_ID', id)
+    const user = await login(this.state.email, this.state.password); 
+
+    if (user) {
+    this.props.tokenToLocalStorage(user.token);
+    localStorage.setItem('USER_ID', user.id)
     this.props.history.push('/') }
     else { this.setState({password:''}) }
 }
