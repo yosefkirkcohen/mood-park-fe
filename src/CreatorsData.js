@@ -3,9 +3,9 @@ export const creators = [
     id: 1,
     name: 'Julius',
     image: '',
-    title: '',
-    bio: '',
-    park: ''
+    title: 'Software Engineer',
+    bio: `Hates long walks on the beach, it's very cliche`,
+    park: 'Central Park'
     },
     {
     id: 2,
