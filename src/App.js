@@ -51,7 +51,7 @@ export default class App extends Component {
                             render={(routerProps) => <HomePage token={this.state.token} {...routerProps} />}
                         />
                         <Route
-                            path="/park/:_parkCode"
+                            path="/park/:parkCode"
                             exact
                             render={(routerProps) => <DetailPage token={this.state.token} {...routerProps} />}
                         />

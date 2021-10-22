@@ -29,7 +29,7 @@ export default class DetailPage extends Component {
 
     componentDidMount = async () => {
 
-        const parkCode = this.props.match.params._parkCode
+        const parkCode = this.props.match.params.parkCode
         const response = await request.get(URL + `/parkDetail/${parkCode}`);
 
         this.setState({ park: response.body.data[0], parkCode: parkCode })
