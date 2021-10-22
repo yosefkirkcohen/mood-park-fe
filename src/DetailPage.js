@@ -114,7 +114,8 @@ export default class DetailPage extends Component {
                     {this.props.token && <form onSubmit={this.state.editing ? this.handleEditSubmit :this.handleCommentSubmit}>
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
                         <TextField fullWidth = {true}  multiline={true} rows={4} label="Comment" id="Comment" variant="outlined" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} />
-                        <Button variant="contained" type='submit'>Post</Button>
+                        {this.state.editing ? <Button variant="contained" type='submit'>Edit</Button>
+                        : <Button variant="contained" type='submit'>Post</Button>}
                     </form> }
                 </div>
                 <section>
