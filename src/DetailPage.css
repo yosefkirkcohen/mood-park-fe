@@ -46,3 +46,7 @@
     text-decoration: none;
     color: dimgray;
 }
+
+.comments, #Comment {
+    background-color: lightgray;
+}
