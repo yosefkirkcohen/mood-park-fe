@@ -15,7 +15,8 @@
 }
 .home-page-head p {
     align-self: center;
-    width: 40vw;
+    width: 50vw;
+    line-height: 1.4rem;
 }
 
 .change-results {

@@ -24,7 +24,7 @@
 
 .park-detail {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2.5fr 1fr 1fr;
     border: dimgray 1px solid;
     border-radius: 1vw;
     padding: 1vw;
@@ -35,8 +35,14 @@
 
 .park-detail div {
     margin: 1vw;
+    line-height: 1.4rem;
 }
 
 .park-detail div div {
     margin: .2vw;
+}
+
+.park-detail a, a:visited {
+    text-decoration: none;
+    color: dimgray;
 }

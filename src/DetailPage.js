@@ -102,10 +102,10 @@ export default class DetailPage extends Component {
                         </div>
                     </section>
                     <section>
-                        <div>State(s):{this.state.park.states}</div>
+                        <div>State: {this.state.park.states}</div>
                         <div>Hours: {this.state.park.operatingHours[0].standardHours.monday}</div>
                         <div>Park Fee: ${this.state.park.entranceFees[0].cost}</div>
-                        <div>Website: {this.state.park.url}</div>
+                        <div><a href={this.state.park.url}>{this.state.park.url}</a></div>
                     </section>
                 </section>
 
