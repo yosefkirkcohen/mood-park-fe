@@ -7,8 +7,8 @@ import Button from '@mui/material/Button';
 import { InputLabel } from '@material-ui/core';
 import './DetailPage.css'
 
-// const URL = 'https://cryptic-dusk-44349.herokuapp.com'
- const URL = 'http://localhost:7890'
+const URL = 'https://cryptic-dusk-44349.herokuapp.com'
+//  const URL = 'http://localhost:7890'
 
 export default class DetailPage extends Component {
 
@@ -79,26 +79,37 @@ export default class DetailPage extends Component {
     render() {
         console.log(this.state)
         return (
-            <div className='detail-page'>
-            {this.props.token && <button onClick={this.handleFavorite}> Add to Favorites </button>}
-            <section className='park-detail'>
-                <h1>{this.state.park.name}</h1>
-                <div></div>
-                <div></div>
+            
+            <div className='detail-page' style={{
+                backgroundImage: `url(${this.state.park.images[0].url})`,
+                resizeMode: `cover`
+                }}>
 
-                {this.state.park.states} <br />
-                {this.state.park.url} <br />
+                {/* park title and add fav button */}
+                <div className='detail-head'>
+                    <h1>{this.state.park.name}</h1>
+                    {this.props.token &&<button onClick={this.handleFavorite}>Favorite</button>}
+                </div>
 
-                <img src={this.state.park.images[0].url} alt='ok' />
-                <br />
-                {this.state.park.description}
-                Activities:
+                {/* park details */}
+                <section className='park-detail'>
+                    <section>
+                        <div>{this.state.park.description}</div>
+                    </section>
+                    <section>
+                        <div>Activities:{this.state.park.activities.map(activity => 
+                            <div>{activity.name}</div>)}
+                        </div>
+                    </section>
+                    <section>
+                        <div>State(s):{this.state.park.states}</div>
+                        <div>Hours: {this.state.park.operatingHours[0].standardHours.monday}</div>
+                        <div>Park Fee: ${this.state.park.entranceFees[0].cost}</div>
+                        <div>Website: {this.state.park.url}</div>
+                    </section>
+                </section>
 
-                {this.state.park.activities.map(activity => <div>{activity.name}</div>)}
-                <br />
-                Park Fee: ${this.state.park.entranceFees[0].cost} <br />
-                Hours: {this.state.park.operatingHours[0].standardHours.monday}
-                <br /> <br />
+                {/* comments section */}
                 <div>
                     {this.props.token && <form onSubmit={this.state.editing ? this.handleEditSubmit :this.handleCommentSubmit}>
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>
@@ -107,7 +118,6 @@ export default class DetailPage extends Component {
                     </form> }
                 </div>
                 <section>
-                    <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
                     {this.state.comments.sort((a,b) => b.park_timestamp-a.park_timestamp).map(comment => {
                         return <div className='comments'>
                             {comment.comment} <br />
@@ -122,7 +132,7 @@ export default class DetailPage extends Component {
                         </div>
                     })}
                 </section>
-                </section>
+
             </div>
         )
     }

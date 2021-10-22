@@ -11,9 +11,7 @@ export async function login(email, password) {
 
         return response.body;
     } catch (e) {
-        console.log(e);
         alert('Your email or password are incorrect.');
-        return null;
     }
 }
 
@@ -26,9 +24,7 @@ export async function signUp(email, password) {
         return response.body;
     }
     catch (e) {
-        console.log(e);
         alert('Email address associated with existing account');
-        return null;
     }
 }
 
