@@ -88,7 +88,7 @@ export default class DetailPage extends Component {
                 {/* park title and add fav button */}
                 <div className='detail-head'>
                     <h1>{this.state.park.name}</h1>
-                    <button onClick={this.handleFavorite}>Favorite</button>
+                    {this.props.token &&<button onClick={this.handleFavorite}>Favorite</button>}
                 </div>
 
                 {/* park details */}
@@ -118,7 +118,6 @@ export default class DetailPage extends Component {
                     </form> }
                 </div>
                 <section>
-                    <div>To edit, type new input into the comment box and then hit the edit button for the appropriate post.</div>
                     {this.state.comments.sort((a,b) => b.park_timestamp-a.park_timestamp).map(comment => {
                         return <div className='comments'>
                             {comment.comment} <br />
