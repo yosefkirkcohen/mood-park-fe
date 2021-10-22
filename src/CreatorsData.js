@@ -2,7 +2,7 @@ export const creators = [
     {
     id: 1,
     name: 'Julius',
-    image: '',
+    image: 'julius_final.jpg',
     title: 'Software Engineer',
     bio: `Hates long walks on the beach, it's very cliche`,
     park: 'Central Park'
@@ -10,10 +10,10 @@ export const creators = [
     {
     id: 2,
     name: 'Marvin',
-    image: '',
-    title: '',
-    bio: '',
-    park: ''
+    image: 'marvin.JPG',
+    title: 'Software Engineer',
+    bio: 'I love long walks with Karl, Julius, and Yosef, no matter where we are. ',
+    park: ' grew up in Seattle Washington and Portland Oregon, and have lived in the Pacific NW my whole life.'
     },
     {
     id: 3,
