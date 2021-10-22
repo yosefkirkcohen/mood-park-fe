@@ -69,10 +69,12 @@ export default class DetailPage extends Component {
         
     }
 
-    handleEditSubmit = async () => {
+    handleEditSubmit = async (e) => {
+        e.preventDefault();
         const token = this.props.token;
         await request.put(`${URL}/api/comments/${this.state.commentId}`).send({ comment: this.state.comment }).set('Authorization', token)
 
+        this.setState({editing:false})
         this.componentDidMount()
     }
 
