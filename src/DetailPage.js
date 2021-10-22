@@ -79,31 +79,37 @@ export default class DetailPage extends Component {
     render() {
         console.log(this.state)
         return (
-            <div className='detail-page' style={{backgroundImage: `url(${this.state.park.images[0].url})`}}>
+            
+            <div className='detail-page' style={{
+                backgroundImage: `url(${this.state.park.images[0].url})`,
+                resizeMode: `cover`
+                }}>
+
+                {/* park title and add fav button */}
                 <div className='detail-head'>
                     <h1>{this.state.park.name}</h1>
                     <button onClick={this.handleFavorite}>Favorite</button>
                 </div>
+
+                {/* park details */}
                 <section className='park-detail'>
                     <section>
                         <div>{this.state.park.description}</div>
                     </section>
-
                     <section>
                         <div>Activities:{this.state.park.activities.map(activity => 
                             <div>{activity.name}</div>)}
                         </div>
                     </section>
-
                     <section>
                         <div>State(s):{this.state.park.states}</div>
                         <div>Hours: {this.state.park.operatingHours[0].standardHours.monday}</div>
                         <div>Park Fee: ${this.state.park.entranceFees[0].cost}</div>
                         <div>Website: {this.state.park.url}</div>
                     </section>
-
-                {/* <img src={this.state.park.images[0].url} alt='ok' /> */}
                 </section>
+
+                {/* comments section */}
                 <div>
                     {this.props.token && <form onSubmit={this.state.editing ? this.handleEditSubmit :this.handleCommentSubmit}>
                         <InputLabel htmlFor="my-input">Post Comment Below</InputLabel>

@@ -4,8 +4,8 @@ import './Favorites.css'
 
 
 
-// const URL = 'https://cryptic-dusk-44349.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://cryptic-dusk-44349.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export default class Favorites extends Component {
     state = {
