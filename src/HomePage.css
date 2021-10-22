@@ -15,7 +15,9 @@
 }
 .home-page-head p {
     align-self: center;
-    width: 40vw;
+    /* width: 40vw; */
+    line-height: 1.4rem;
+    text-align: center;
 }
 
 .change-results {
