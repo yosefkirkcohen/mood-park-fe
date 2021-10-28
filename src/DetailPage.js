@@ -36,6 +36,7 @@ export default class DetailPage extends Component {
 
         const token = this.props.token
         if (token) {
+            // again, all these half dozen or so requests throughout the comoonent make the code tough to reason about, so I would have liked to see them refactored into their own utils file
             const comments = await request.get(URL + `/api/comments/${parkCode}`).set('Authorization', token);
             this.setState({ comments: comments.body })
             console.log(comments.body)

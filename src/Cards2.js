@@ -28,6 +28,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+// seems like this could have used a bit more review before the copy paste :) I'd be confused if I was expected to maintain a parks favoriting app that referred to recipes
 export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false);
 

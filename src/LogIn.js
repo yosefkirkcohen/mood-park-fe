@@ -24,7 +24,7 @@ handleSubmit = async e => {
     
     const user = await login(this.state.email, this.state.password); 
 
-    if (user) {
+    if (user) { // nice logic here--good idea to reset the password box if the user login fails
     this.props.tokenToLocalStorage(user.token);
     localStorage.setItem('USER_ID', user.id)
     this.props.history.push('/') }

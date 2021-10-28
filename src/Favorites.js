@@ -16,6 +16,7 @@ export default class Favorites extends Component {
 
     componentDidMount = async () => {
         const token = this.props.token
+        // I would have liked to see these fetches all written out in a separate file, that way 1) they'd be reusable, 2) they'd keep the components cleaner and 3) it would take less work to change the URL for different environments
         const response = await request.get(`${URL}/api/favorites`).set('Authorization', token)
         this.setState({ favorites: response.body })
         

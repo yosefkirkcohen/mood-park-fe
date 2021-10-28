@@ -43,6 +43,7 @@ export async function signUp(email, password) {
 //     }
 // }
 
+// nice util!
 export function isFavorite(park, favorites) {
 
     return !!favorites.find(favorite => {
