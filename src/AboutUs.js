@@ -8,6 +8,7 @@ export default class AboutUs extends Component {
             <section className='bios-page'>
             <h1>TEAM PARKS</h1>
             <section className='bios'>
+                {/* nice work mapping through data here! I never see people do this on their about us page for some reason, so I'm happy to see it happen here! */}
                 {creators.map(creator => 
                     <span key={creator.name}>
                     <img src={creator.image} alt={creator.name}/>

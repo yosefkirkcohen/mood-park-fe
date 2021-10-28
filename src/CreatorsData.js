@@ -1,3 +1,5 @@
+// nice idea splitting this data into its own file! however, this file name should be lowercase, since it's not a component or a class
+
 export const creators = [
     {
         id: 3,

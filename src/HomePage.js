@@ -27,22 +27,22 @@ export default class HomePage extends Component {
 
     state = {
         parks: [],
-        SearchPark: '',
+        // capitalized variables feel a little weird unless they are components or classes
+        searchPark: '',
         favorites: [],
         parkCode: '',
-
         start: 0,
         isLoading: false
     }
 
     submitPark = async (e) => {
         e.preventDefault()
-        const response = await request.get(`${URL}/park?q=${this.state.SearchPark}`)
+        const response = await request.get(`${URL}/park?q=${this.state.searchPark}`)
         this.setState({ parks: response.body.data })
     }
 
     handleSearch = async (e) => {
-        this.setState({ SearchPark: e.target.value })
+        this.setState({ searchPark: e.target.value })
     }
 
     handleRemove = async (parkCode) => {
@@ -62,7 +62,7 @@ export default class HomePage extends Component {
         this.setState({ favorites: favs.body })
     }
 
-    componentDidMount = async () => {
+    doAsyncStuff = () => {
         this.setState({ isLoading: true })
         const token = this.props.token
         const response = await request.get(`${URL}/parks?start=${this.state.start}`)
@@ -72,21 +72,27 @@ export default class HomePage extends Component {
             this.setState({ favorites: favs.body })
         }
         this.setState({ parks: response.body.data, isLoading: false })
+
+    }
+
+    componentDidMount = async () => {
+        await this.doAsyncStuff();
     }
 
     nextTwenty = async () => {
         await this.setState({ start: this.state.start + 20 })
-        this.componentDidMount()
+        // it's usually a better idea to move code to another method rather than call componentDidMoun explicitly. Cool thinking though, showing a lot of understanding about how classes work
+        this.doAsyncStuff()
     }
 
     previousTwenty = async () => {
         await this.setState({ start: this.state.start - 20 })
-        this.componentDidMount()
+        this.doAsyncStuff()
     }
 
     firstTwenty = async () => {
-        await this.setState({ start: this.state.start = 0 })
-        this.componentDidMount()
+        await this.setState({ start: 0 })
+        this.doAsyncStuff()
     }
 
     render() {
@@ -151,6 +157,7 @@ export default class HomePage extends Component {
                             </CardActionArea>
                            { this.props.token && <CardActions>
                                 {
+                                    // very cool! nice work figuring out how to render favorites differently from other parks
                                     isFavorite(park, this.state.favorites)
                                         ? <IconButton size='large' color='error' aria-label="add to favorites" onClick={() => this.handleRemove(park.parkCode)}>
                                             <FavoriteIcon />

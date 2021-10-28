@@ -9,6 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
+// woooah this is some serious material ui weirdness! nice work fitting it into the app :)
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -51,6 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+// I do think this component could have used a more evocative name than Menu2 for clarity
 export default function SearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
